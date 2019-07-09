@@ -1,0 +1,231 @@
+.customer-search-result .search-product-result.jd-scroll-hover{
+	background-color:#4082c4;
+	color:white;
+}
+.jd-add-customer-form label.title{
+	font-size:16px;
+}
+.jd-add-customer-form label .label-light{
+	color:gray;
+}
+.jd-add-customer-form .gender-form label{
+	display:inline-block;
+	cursor:pointer;
+}
+/*.jd-add-customer-form{
+	width:100%;
+	display:table;
+}*/
+.save-warning{
+	color: #ff9900;
+	font-size: 14px;
+	padding: 0 0 0 5px;
+	margin:10px 0 10px 0;
+}
+.jd-add-customer-form .left-section{
+	display:table-cell;
+	padding-right:30px;
+	width:50%;
+}
+.jd-add-customer-form .right-section{
+	display:table-cell;
+	padding-left:5px;
+}
+.jd-add-customer-form .name-form .form-control{
+	width:48%;
+	display:inline-block;
+}
+.jd-add-customer-form .name-form .last-name{
+	margin-left:2%;
+}
+.jd-add-customer-form .dob-form .form-control{
+	display:inline-block;
+	width: 100%;
+	/*border: none;*/
+	box-shadow: none;
+	margin-bottom: 1px;
+}
+.jd-add-customer-form .dob-form .separator{
+	padding:0pc 5px;
+}
+.jd-add-customer-form .dob-form{
+	/*border: 1px solid #d8dee6;*/
+	border-radius: 4px;
+}
+
+
+.margin15{
+	margin-bottom: 15px;
+}
+
+/*.margin15 .form-control-contact-code
+{
+	display: inline-block;
+	border:1px solid #d8dee6;
+	width: 10%;
+	padding-left: 3px;
+	line-height: 32px;
+	 border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}*/
+
+/*.margin15 .contact-width{
+	display: inline-block;
+	width: 90%;
+	margin-left: -5px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}*/
+
+.margin20{
+	margin-bottom: 20px;
+}
+
+.gender-form .margin10{
+	margin-right: 10px;
+}
+
+.gender-form .margin2{
+	margin-right: 2px;
+}
+
+.right-section textarea
+{
+	height:100px;
+}
+
+.right-section .form-control[disabled]
+{
+background: #DDDADA;
+cursor: pointer;
+}
+
+.modal-body .jd-add-customer-form .left-section
+{
+	position: relative;
+}
+
+.customer-search-result .search-product-result
+{
+	background-color: white;
+	border-width: 1px;
+	border-style: solid;
+	padding-bottom: 5px;
+	padding-top: 5px;
+	border-bottom-style: solid;
+	padding-left: 18px;
+	/* line-height: 27px; */
+	border-color: #d8dee6;
+	border-top: 1px solid;
+}
+
+.customer-search-result
+{
+  max-height: 225px;
+  overflow: auto;
+  position: absolute;
+  width: 528px;
+  top: 60px;
+  border-color: #d8dee6;
+  border-top-style: none;
+  border-bottom-color: #d8dee6;
+  border-bottom-width: 1px;
+  z-index: 1000;
+  box-shadow: 3px 3px 3px lightgray;
+   
+  	/*margin-left: 15px;*/
+}
+
+.margin15 .icon-cross-circle
+{
+	position: absolute;
+	top: 50%;
+    transform: translate(0,-50%);
+    font-size: 18px;
+	right: 8px;
+	color: darkgray;
+	z-index: 2;
+}
+
+.error-position{
+	position: absolute;
+	right: 31px;
+	line-height: 6px;
+}
+
+.jd-add-customer-modal-container{
+	min-width: 750px;
+}
+
+.padT0{padding-top: 0}
+
+.add-Customer-Btn:focus
+{
+	background: #3877b6!important;
+  	border-color: #2a74a0!important;
+}
+.padding-LR-15{
+	padding: 0 15px;
+}
+.col-xs-6 .margin15 .textarea-height-109px, .jd-add-new-customer-modal .textarea-height-109px{
+	height: 109px;
+}
+/* .chanel-type-div {
+  border: 1px solid #e3eaee;
+  border-radius: 3px;
+  display: inline-block;
+  padding: 1px 5px;
+  font-size: 15px;
+}
+.chanel-type-div i {
+  color: #4082c4;
+} */
+.top-10 {
+  position: relative;
+  top: 10px;
+}
+
+.edit-customer-address-modal-body.modal-body .form-group {
+  margin-bottom: 2px;
+}
+
+.add-product-modal .product-category-help{
+    padding: 5px;
+    color: #fff;
+}
+.add-product-modal .product-category-help i{
+    position: relative;
+    top: 3px;
+}
+.margin-bottom-15{
+    margin-bottom: 15px;
+}
+.jd-add-customer-form .col-xs-4{
+	width: 33.33333333%;
+}
+.jd-add-new-customer-modal .width-900{
+	width: 900px;
+}
+.jd-add-new-customer-modal .section-border{
+	min-height: 383px;
+	border-right: 1px solid #E5E5E5;
+}
+.jd-add-new-customer-modal .date-input{
+	width: 263px;
+    left: 15px;
+}
+.jd-add-new-customer-modal .icon-calender.date-value-calender.jd-color-inherit{
+	position: absolute;
+    right: 26px;
+}
+.jd-add-new-customer-modal .time-slots{
+	width: 263px;
+    position: relative;
+    left: 15px;
+}
+.jd-add-new-customer-modal .date-input-lable, .jd-add-new-customer-modal .time-select-lable{
+	margin-left: 16px;
+}
+.jd-add-new-customer-modal .date-holder, .jd-add-new-customer-modal .time-slot-holder{
+	padding-bottom: 15px;
+}

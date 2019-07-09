@@ -1,0 +1,352 @@
+.selectBEmailSysModal .modal-header .close,.bookEmailModal .modal-header .close{
+	margin: 0;
+	position: relative;
+	top: -2px;
+}
+
+.selectBEmailSysModal .modal-header .modal-title,.bookEmailModal .modal-header .modal-title{
+	line-height: 1;
+}
+
+.font40{
+	font-size: 40px;
+}
+
+/**************SELECT BUSINESS EMAIL MODAL STYLES**************/
+
+.selectBEmailSysModal .modal-dialog{
+	width: 900px;
+}
+
+.selectBEmailSysModal .modal-body{
+	padding: 15px 0;
+	text-align: center;
+	text-align: -webkit-center;
+}
+
+.selectBEmailSysModal .modal-body .email-sys-body{
+	display: inline-block;
+	text-align: center;
+	text-align: -webkit-center;
+	width: 49.8%;
+	padding-top: 15px;
+	padding-bottom: 30px;
+	margin: 10px 0;
+}
+
+.selectBEmailSysModal .modal-body .email-sys-body.border-right{
+	border-right: 1px solid #ccc;
+}
+
+.selectBEmailSysModal .modal-body .email-sys-body .img-container{
+	height: 70px;
+}
+
+.selectBEmailSysModal .modal-body .email-sys-body .img-container .img{
+	height: 75px;
+	padding-top: 0;
+	padding-bottom: 35px;
+}
+
+.selectBEmailSysModal .modal-body .email-sys-body .desc-container{
+	height: 220px;
+}
+
+.selectBEmailSysModal .modal-body .email-sys-body .desc-container .description{
+	padding: 0;
+	line-height: 30px;
+}
+
+.selectBEmailSysModal .modal-body .email-sys-body .rate-container{
+	height: 100px;
+}
+
+.selectBEmailSysModal .modal-body .email-sys-body .rate-container .ppmlbl{
+	margin-top: 2px;
+	margin-bottom: 2px;
+	font-size: 20px;
+}
+
+.selectBEmailSysModal .modal-body .email-sys-body .rate-container .ppm{
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.selectBEmailSysModal .modal-body .email-sys-body .rate-container .ppm .perU{
+	color: #ababab;
+	font-weight: normal;
+}
+
+.selectBEmailSysModal .modal-body .email-sys-body .rate-container .btn-container{
+	margin-top: 2px;
+	margin-bottom: 2px;
+}
+
+.selectBEmailSysModal .modal-body .email-sys-body .rate-container .btn-container .btn-primary,.selectBEmailSysModal .modal-body .email-sys-body .rate-container .btn-container .btn-coming-soon{
+	margin-top: 10px;
+	width: 105px;
+	padding: 6px 0;
+}
+
+.selectBEmailSysModal .modal-body .email-sys-body .rate-container .btn-container .btn-coming-soon[disabled]{
+	background:#7b7c80; 
+	border-color: #7b7c80;
+	color: #fff;
+	opacity: 1;
+}
+
+/**************SELECT BUSINESS EMAIL MODAL STYLES END**************/
+/**************BOOK EMAIL MODAL STYLES***************/
+
+.bookEmailModal .modal-dialog{
+	width: 600px;
+}
+
+.bookEmailModal .modal-body .input-num-of-email{
+	float: none;
+	height: 40px;
+	width: 82px;
+}
+
+.bookEmailModal .modal-body .domain-label{
+	margin-bottom: 0;
+}
+
+.bookEmailModal .modal-body{
+	padding: 5px 15px;
+}
+
+.bookEmailModal .modal-body .input-num-of-email .drop-down .drop-down-input{
+	padding-bottom: 1px;
+	height: 24px;
+	padding-left: 10px;
+	padding-top: 5px;
+}
+
+.bookEmailModal .modal-body .input-num-of-email .drop-down .drop-down-input:focus{
+	border-bottom: 2px solid #4082c4;
+}
+
+.bookEmailModal .modal-body .input-num-of-email .drop-down .icon-down-style{
+	top:5px;
+	right: 2px;
+}
+
+.bookEmailModal .modal-body .input-num-of-email .drop-down .drop-down-ul{
+	min-width: 0;
+	max-height: 150px;
+	top: 22px;
+	border: none;
+	box-shadow: none;
+}
+
+.bookEmailModal .modal-body .input-num-of-email .drop-down .drop-down-ul .drop-down-li .border-bottom{
+	padding: 2px 0;
+	border: transparent;
+}
+
+.bookEmailModal .modal-body .input-num-of-email .drop-down .drop-down-ul .drop-down-li .border-bottom .icon-selected{
+	display: none;
+}
+
+.bookEmailModal .modal-body .input-num-of-email .drop-down .drop-down-ul .drop-down-li .border-bottom div{
+	padding: 1px 0;
+}
+
+.bookEmailModal .modal-body .input-num-of-email .jd-validation-error{
+	width: 200%;
+	font-size: 13px;
+	padding-top: 8px;
+	color: #ea493f;
+}
+
+.bookEmailModal .modal-body .input-num-of-email .inputBox{
+	float: none;
+	border: none;
+	padding: 0;
+}
+
+.bookEmailModal .modal-body .input-num-of-email .inputBox .email-input-number{
+	float: none;
+	border: none;
+	border-bottom: 1px solid #ccc;
+	padding: 0;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	height: 24px;
+	padding-bottom: 1px;
+	padding-left: 10px;
+	padding-top: 5px;
+	width: 99%;
+	background: transparent;
+}
+
+.bookEmailModal .modal-body .input-num-of-email .inputBox .email-input-number:focus{
+	outline: none;
+	border-bottom: 2px solid #4082c4;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.bookEmailModal .modal-body .input-num-of-email .inputBox .ng-invalid{
+	border-bottom: 2px solid #ea493f;	
+}
+
+.bookEmailModal .modal-footer .btn-default{
+	padding: 6px 20px;
+}
+
+
+.bookEmailModal .modal-body .width160{
+	width: 160px;
+}
+
+.bookEmailModal .modal-body .perU{
+	display: inline-block;
+	color: #777;
+	margin: 15px 0;
+}
+
+.bookEmailModal .modal-body .perU .ppm{
+	color: #444;
+	/*font-size: 18px;*/
+}
+
+.bookEmailModal .modal-body .perU .ppm .pyr{
+	color: #777;
+	font-weight: 400;
+}
+
+.bookEmailModal .modal-body .jd-dropdown-menu .list-noeOptions{
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+.bookEmailModal .modal-body .border-btm-blue{
+	border-bottom: 2px solid #4082c4;
+}
+
+
+.bookEmailModal .modal-footer{
+	margin-top: 5px;
+}
+
+/**************BOOK EMAIL MODAL STYLES END***************/
+/**************WEB EMAIL PAGE STYLES*******************/
+
+.web-email-page .marginT70{
+	background-color: #fff;
+}
+
+.web-email-page hr{
+	width:98%;
+	border-color:#ccc;
+}
+
+.web-email-page .emailCtrlPnlbtn{
+	padding-right: 1%;
+}
+
+.web-email-page .emailCtrlPnlbtn .btn-primary{
+	margin: 10px 0;
+}
+
+.web-email-page .emailCtrlPnlbtn .btn-primary .btn-text{
+	position: relative;
+	top: -2px;
+}
+
+.web-email-page .marginT70{
+	margin-top:40px;
+	padding-top: 30px;
+}
+
+.web-email-page .header-style{
+	border: 1px solid #E6E6E6;
+	background-color: #EAEAEA;
+	height: 40px;
+	font-size: 15px;
+	border-right: none;
+	padding: 10px 0px;
+	border-left: none;
+}
+
+.web-email-page .marginTB20{
+	margin: 20px 0;
+}
+
+.web-email-page .success-text-pos{
+	vertical-align: middle;
+	display: inline-block;
+	width: 94%;
+}
+
+.web-email-page .iconContain{
+	vertical-align: middle;
+	display: inline-block;
+	width: 5%;
+}
+
+.web-email-page .header{
+	padding-bottom: 20px;
+}
+
+.web-email-page .mx-record-body{
+	background-color: #fff;
+	padding: 0;
+}
+
+.web-email-page .mx-record-body .table hr{
+	margin-bottom: 0;
+}
+
+.web-email-page .mx-record-body .table .tcol1{
+	width: 20%;
+}
+
+.web-email-page .mx-record-body .table .tcol2{
+	width: 20.6%;
+}
+
+.web-email-page .header .bold,.web-email-page .mx-record-body .bold{
+	font-weight: 500;
+}
+
+.web-email-page .mx-record-body .paras,.web-email-page .last{
+	margin-bottom: 10px;
+	font-size: 14px;
+}
+
+.web-email-page .last{
+	padding-bottom: 30px;
+	background-color: #fff;
+}
+
+.web-email-page .mx-record-body .table{
+	margin-bottom: 25px;
+	margin-top: 25px
+}
+
+.web-email-page .mx-record-body .table sup{
+	color: inherit;
+	font-size: inherit;
+	top: -.3em;
+	left: -.1em;
+}
+
+.web-email-page .icon-mail{
+	color: #fff;
+	font-size: 20px;
+	padding-right: 5px;
+	position: relative;
+	top: 1px;
+}
+
+.web-email-page .align-text-left{
+	text-align: left; 
+}
+
+.web-email-page .icon-openMail{
+	color: #777;
+}
+/**************WEB EMAIL PAGE STYLES END*******************/

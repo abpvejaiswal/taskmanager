@@ -1,0 +1,686 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="AdminMaster.master.cs" Inherits="TaskManager.tm_admin.AdminMaster" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Panel | Techno CRM</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="img/logo/favicon.png" />
+    <!-- Vendor CSS -->
+    <link href="vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+    <link href="vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css" rel="stylesheet">
+    <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+
+
+    <%--<link href="vendors/bower_components/animate.css/animate.min.css" rel="stylesheet">
+    <link href="vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css" rel="stylesheet">
+    <link href="vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">--%>
+
+    <link href="vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet">
+    <link href="vendors/bower_components/summernote/dist/summernote.css" rel="stylesheet">
+
+    <link href="vendors/bower_components/nouislider/distribute/jquery.nouislider.min.css" rel="stylesheet">
+    <link href="vendors/bower_components/summernote/dist/summernote.css" rel="stylesheet">
+    <link href="vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="vendors/farbtastic/farbtastic.css" rel="stylesheet">
+
+
+    <link href="vendors/chosen_v1.4.2/chosen.min.css" rel="stylesheet">
+    <link href="vendors/bootgrid/jquery.bootgrid.min.css" rel="stylesheet" />
+    <!-- CSS -->
+    <link href="css/app.min.1.css" rel="stylesheet" />
+    <link href="css/app.min.2.css" rel="stylesheet" />
+
+    <link href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="http://cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.css" />
+
+
+    <!-- Following CSS codes are used only fore demo purposes thus you can remove anytime -->
+    <style type="text/css">
+        .dropdown-basic-demo {
+            display: inline-block;
+            margin: 0 15px 20px 0;
+        }
+
+            .dropdown-basic-demo .dropdown-menu {
+                display: block;
+                position: relative;
+                transform: scale(1);
+                opacity: 1;
+                filter: alpha(opacity=1);
+                z-index: 0;
+            }
+
+        .dropdown-btn-demo .dropdown, .dropdown-btn-demo .btn-group, .btn-demo .btn {
+            display: inline-block;
+            margin: 0 5px 7px 0;
+        }
+
+        .modal-preview-demo .modal {
+            position: relative;
+            display: block;
+            z-index: 0;
+            background: rgba(0,0,0,0.1);
+        }
+
+        .margin-bottom > * {
+            margin-bottom: 20px;
+        }
+
+        .popover-demo .popover {
+            position: relative;
+            display: inline-block;
+            opacity: 1;
+            margin: 0 10px 30px;
+            z-index: 0;
+        }
+        .profile-menu > a .profile-pic{            
+            height: 48px;
+            width: 49px;    
+        }
+        .profile-menu > a{
+            height:98px;
+        }
+        .dropdown-menu:not([class*="bgm-"]) > li > a:hover{
+            color:#fff;
+        }
+    </style>
+    <style>
+        /*for custom submit button*/
+        .custom-submit-btn {
+            display: inline-block;
+            margin-bottom: 0;
+            font-weight: 400;
+            text-align: center;
+            vertical-align: middle;
+            touch-action: manipulation;
+            cursor: pointer;
+            background-image: none;
+            border: 1px solid transparent;
+            white-space: nowrap;
+            padding: 6px 12px;
+            font-size: 13px;
+            line-height: 1.42857143;
+            border-radius: 2px;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        .custom-submit-btn:not(.btn-link) {
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
+        }
+    </style>
+
+    <%--<script src="angular/angular.min.js"></script>--%>
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+
+    <%--<script src="https://code.angularjs.org/snapshot/angular-sanitize.js"></script>--%>
+
+
+
+
+
+
+    <script src="angular/loading-bar.js"></script>
+    <link href="angular/loading-bar.css" rel="stylesheet" />
+
+
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/ng-flow/2.5.1/ng-flow-standalone.min.js"></script>
+
+    <script src="angular/progressbar/ngprogress.js"></script>
+    <link href="angular/progressbar/ngProgress.css" rel="stylesheet" />
+
+    <script src="angular/datatable/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+    <script src="angular/datatable/angular-datatables.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/angular-datatables/0.6.1/css/angular-datatables.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="http://mbenford.github.io/ngTagsInput/css/ng-tags-input.min.css" />
+    <script src="http://mbenford.github.io/ngTagsInput/js/ng-tags-input.min.js"></script>
+
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <script src="angular/MeetingDetailApp.js"></script>
+
+    <script src="angular/QuotationController.js"></script>
+    <script src="angular/EnquiryController.js"></script>
+    <script src="angular/ProformaInvoiceController.js"></script>
+    <script src="angular/OrderAcceptanceController.js"></script>
+    <script src="angular/DispatchNote.js"></script>
+    <script src="angular/HistoryController.js"></script>
+    <script src="angular/ToDoListController.js"></script>
+    <script src="angular/NotificationController.js"></script>
+</head>
+<body>
+    <%--<body ng-app="myApp">--%>
+    <form id="form1" runat="server">
+        <asp:ScriptManager ID="ToolkitScriptManager1" runat="server">
+        </asp:ScriptManager>
+        <header id="header">
+
+            <ul class="header-inner">
+                <li id="menu-trigger" data-trigger="#sidebar">
+                    <div class="line-wrap">
+                        <div class="line top">
+                        </div>
+                        <div class="line center">
+                        </div>
+                        <div class="line bottom"></div>
+                    </div>
+                </li>
+                
+                <li class="logo"><a href="Dashboard.aspx">
+                    <img src="img/logo/logo.jpg" style="margin-top: -21px;width: 267px;margin-left: -24px;height: 65px;" /></a>&nbsp;
+                    </li>
+
+                <%--<li class="logo"><a style="
+    font-weight: bold;
+    text-decoration: overline;
+" href="Dashboard.aspx">
+                                TECHNO CRM </a></li>--%>
+
+                <li class="pull-right">
+                    <ul class="top-menu">
+                        <li id="toggle-width">
+                            <div class="toggle-switch">
+                                <input id="tw-switch" type="checkbox" hidden="hidden">
+                                <label for="tw-switch" class="ts-helper"></label>
+                            </div>
+                        </li>
+                        <%--<li id="top-search">
+                            <a class="tm-search" href="#"></a>
+                        </li>--%>
+                        
+                        
+                        
+                        
+
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="tm-settings" href="#"></a>
+                            <ul class="dropdown-menu dm-icon pull-right">
+                                
+                                <li>
+                                    <a href="MyDetail.aspx"><i class="zmdi zmdi-account-box"></i>My Details</a>
+                                </li>
+                                <li>
+                                    <a href="ChangePassword.aspx"><i class="zmdi zmdi-lock-outline"></i>Change Password</a>
+                                </li>
+                                <li>
+                                    <a href="Logout.aspx"><i class="zmdi zmdi-time-restore"></i>Logout</a>
+                                </li>
+                                <li class="hidden-xs">
+                                    <a data-action="fullscreen" href="#"><i class="zmdi zmdi-fullscreen"></i>Toggle Fullscreen</a>
+                                </li>
+
+                                <%-- <li>
+                                    <a data-action="clear-localstorage" href="#"><i class="zmdi zmdi-delete"></i>Clear Local Storage</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="zmdi zmdi-face"></i>Privacy Settings</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="zmdi zmdi-settings"></i>Other Settings</a>
+                                </li>--%>
+                            </ul>
+                        </li>
+
+                        <%--<li class="hidden-xs" id="chat-trigger" data-trigger="#chat">
+                            <a class="tm-chat" href="#"></a>
+                        </li>--%>
+                </li>
+            </ul>
+            <!-- Top Search Content -->
+            <div id="top-search-wrap">
+                <input type="text">
+                <i id="top-search-close">&times;</i>
+            </div>
+        </header>
+
+        <section id="main">
+            <aside id="sidebar">
+                <div class="sidebar-inner c-overflow">
+                    <div class="profile-menu">
+                        <a href="#">
+                            <div class="profile-pic">
+                                
+                            </div>
+
+                            <div class="profile-info">
+                                <asp:Literal runat="server" ID="ltrLoginName"></asp:Literal>
+                                <i class="zmdi zmdi-arrow-drop-down"></i>
+                            </div>
+                        </a>
+
+                        <ul class="main-menu">
+                            
+                            <li>
+                                <a href="MyDetail.aspx"><i class="zmdi zmdi-account-box"></i>My Details</a>
+                            </li>
+                            <li>
+                                <a href="ChangePassword.aspx"><i class="zmdi zmdi-lock-outline"></i>Change Password</a>
+                            </li>
+                            <li>
+                                <a href="Logout.aspx"><i class="zmdi zmdi-time-restore"></i>Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <ul class="main-menu">
+                        <%--<li><a href="Home.aspx"><i class="zmdi zmdi-home"></i>Home</a></li>--%>
+
+                        <li><a href="Dashboard.aspx"><i class="zmdi zmdi-chart"></i>Dashboard</a></li>
+
+                        <li class="sub-menu" runat="server" id="masterdatamenu" visible="true">
+                            <a href="#"><i class="zmdi zmdi-star"></i>Master</a>
+                            <ul>
+                                <asp:Literal ID="ltrmaster" runat="server"></asp:Literal>
+                                <li><a href="YearMaster.aspx">Year Master</a></li>
+                                <li><a href="ContactMaster.aspx">Contact Master</a></li>
+                                <li><a href="ClientGroupMaster.aspx">Client Group Master</a></li>
+                                <li><a href="NatureWorkMaster.aspx">Nature Of Work Master</a></li>
+                                <li><a href="EmployeeMaster.aspx">Employee Master</a></li>
+                            </ul>
+                        </li>
+                        
+                        <li class="sub-menu" runat="server" id="taskmanagementmenudata" visible="true">
+                            <a href="#"><i class="zmdi zmdi-assignment"></i>Task Manager</a>
+                            <ul>
+                                
+                                <li><a runat="server" id="aCreatTask" visible="false" href="CreateTask.aspx">Create Task</a></li>
+                                <li><a href="MyTask.aspx">My Task</a></li>
+                                <li><a runat="server" id="aAllTask" visible="false" href="AllTask.aspx">All Task</a></li>
+                                <asp:Literal ID="ltrTaskManager" runat="server"></asp:Literal>
+                            </ul>
+                        </li>
+                        <asp:Literal ID="ltrgeneral" runat="server"></asp:Literal>
+                    </ul>
+                </div>
+            </aside>
+
+            
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+            <footer class="text-center">
+                Copyright &copy; 2017 Techno CRM
+            
+            
+            </footer>
+        </section>
+
+
+        </form>
+
+
+
+    <!-- Javascript Libraries -->
+    <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <script src="vendors/bower_components/jquery.nicescroll/jquery.nicescroll.min.js"></script>
+    <script src="vendors/bower_components/Waves/dist/waves.min.js"></script>
+    <script src="vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
+    <script src="vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.min.js"></script>
+
+    <%--ADD THIS THREE JS FOR DATE AND TIME PICKER--%>
+    <script src="vendors/bower_components/moment/min/moment.min.js"></script>
+    <%--<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>--%>
+    <script src="vendors/bower_components/nouislider/distribute/jquery.nouislider.all.min.js"></script>
+    <%--ADD THIS THREE JS FOR DATE AND TIME PICKER--%>
+
+    <script src="vendors/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+    <script src="vendors/bower_components/summernote/dist/summernote.min.js"></script>
+    <%--<script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>--%>
+
+
+    <!-- Placeholder for IE9 -->
+    <!--[if IE 9 ]>
+            <script src="vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+        <![endif]-->
+
+    <script src="js/functions.js"></script>
+    <script src="js/demo.js"></script>
+
+    <!-- Following is only for demo purpose to trigger colored modals. You may ignore this when you implement -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('body').on('click', '#btn-color-targets > .btn', function () {
+                var color = $(this).data('target-color');
+                $('#modalColor').attr('data-modal-color', color);
+            });
+        });
+    </script>
+
+    <!-- Data Table -->
+    <script src="vendors/bootgrid/jquery.bootgrid.min.js"></script>
+    <script src="vendors/bootgrid/jquery.bootgrid.min.js"></script>
+
+    <!-- Javascript Libraries -->
+    <%--<script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>--%>
+    <%--<script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>--%>
+
+    <%--<script src="vendors/bower_components/jquery.nicescroll/jquery.nicescroll.min.js"></script>
+        <script src="vendors/bower_components/Waves/dist/waves.min.js"></script>
+        <script src="vendors/bootstrap-growl/bootstrap-growl.min.js"></script>
+        <script src="vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.min.js"></script>
+    --%>
+    <%--<script src="vendors/bower_components/moment/min/moment.min.js"></script>--%>
+    <script src="vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+    <%--<script src="vendors/bower_components/nouislider/distribute/jquery.nouislider.all.min.js"></script>--%>
+    <%--<script src="vendors/bower_components/summernote/dist/summernote.min.js"></script>--%>
+    <script src="vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <%--<script src="vendors/bower_components/typeahead.js/dist/typeahead.bundle.min.js"></script>--%>
+
+    <!-- Placeholder for IE9 -->
+    <!--[if IE 9 ]>
+            <script src="vendors/bower_components/jquery-placeholder/jquery.placeholder.min.js"></script>
+        <![endif]-->
+
+    <script src="vendors/chosen_v1.4.2/chosen.jquery.min.js"></script>
+
+    <script src="vendors/input-mask/input-mask.min.js"></script>
+
+    <%--Billing--%>
+
+    <%--<script src="code.jquery.com/jquery-1.11.2.min.js"></script>--%>
+    <script src="code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <script src="code.jquery.com/ajax.js"></script>
+
+
+
+
+    <link href="external/editor.css" rel="stylesheet" />
+    <script src="external/editor.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#txtEditor").Editor();
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Basic Example
+            $("#data-table-basic").bootgrid({
+                css: {
+                    icon: 'zmdi icon',
+                    iconColumns: 'zmdi-view-module',
+                    iconDown: 'zmdi-expand-more',
+                    iconRefresh: 'zmdi-refresh',
+                    iconUp: 'zmdi-expand-less'
+                },
+                Command: true
+            });
+
+            //Selection
+            $("#data-table-selection").bootgrid({
+                css: {
+                    icon: 'zmdi icon',
+                    iconColumns: 'zmdi-view-module',
+                    iconDown: 'zmdi-expand-more',
+                    iconRefresh: 'zmdi-refresh',
+                    iconUp: 'zmdi-expand-less'
+                },
+                selection: true,
+                multiSelect: true,
+                rowSelect: true,
+                keepSelection: true
+            });
+
+            //Command Buttons
+            $("#data-table-command").bootgrid({
+                css: {
+                    icon: 'zmdi icon',
+                    iconColumns: 'zmdi-view-module',
+                    iconDown: 'zmdi-expand-more',
+                    iconRefresh: 'zmdi-refresh',
+                    iconUp: 'zmdi-expand-less'
+                },
+                formatters: {
+                    "commands": function (column, row) {
+                        return "<button type=\"button\" class=\"btn btn-icon command-edit\" data-row-id=\"" + row.id + "\"><span class=\"zmdi zmdi-edit\"></span></button> " +
+                            "<button type=\"button\" class=\"btn btn-icon command-delete\" data-row-id=\"" + row.id + "\"><span class=\"zmdi zmdi-delete\"></span></button>";
+                    }
+                }
+            });
+        });
+    </script>
+
+
+
+    <%--For Notification Message --%>
+
+    <script>
+        /// Function For Notification
+        function InvokeNotification() {
+            alert('');
+            //e.preventDefault();
+            //var nFrom = $(this).attr('data-from');
+            //var nAlign = $(this).attr('data-align');
+            //var nIcons = $(this).attr('data-icon');
+            //var nType = $(this).attr('data-type');
+            //var nAnimIn = $(this).attr('data-animation-in');
+            //var nAnimOut = $(this).attr('data-animation-out');
+
+            //notify(nFrom, nAlign, nIcons, nType, nAnimIn, nAnimOut);
+        };
+    </script>
+    <script type="text/javascript">
+        /*
+         * Notifications
+         */
+        function notify(from, align, icon, type, animIn, animOut, custommessage) {
+            // alert(custommessage);
+            $.growl({
+                icon: icon,
+                title: '<b> Success ! </b>',
+                message: custommessage,
+                url: ''
+            }, {
+                element: 'body',
+                type: type,
+                allow_dismiss: true,
+                placement: {
+                    from: from,
+                    align: align
+                },
+                offset: {
+                    x: 20,
+                    y: 85
+                },
+                spacing: 10,
+                z_index: 1031,
+                delay: 4000,
+                timer: 1000,
+                url_target: '_blank',
+                mouse_over: false,
+                animate: {
+                    enter: animIn,
+                    exit: animOut
+                },
+                icon_type: 'class',
+                template: '<div data-growl="container" class="alert" role="alert">' +
+                                '<button type="button" class="close" data-growl="dismiss">' +
+                                    '<span aria-hidden="true">&times;</span>' +
+                                    '<span class="sr-only">Close</span>' +
+                                '</button>' +
+                                '<span data-growl="icon"></span>' +
+                                '<span data-growl="title"></span>' +
+                                '<span data-growl="message"></span>' +
+                                '<a href="#" data-growl="url"></a>' +
+                            '</div>'
+            });
+        };
+
+
+        $('.notifications').click(function (e) {
+
+            e.preventDefault();
+            var nFrom = $(this).attr('data-from');
+            var nAlign = $(this).attr('data-align');
+            var nIcons = $(this).attr('data-icon');
+            var nType = $(this).attr('data-type');
+            var nAnimIn = $(this).attr('data-animation-in');
+            var nAnimOut = $(this).attr('data-animation-out');
+            var custommessage = $(this).attr('data-custommessage');
+            notify(nFrom, nAlign, nIcons, nType, nAnimIn, nAnimOut, custommessage);
+        });
+
+
+        $('.deletenotifications').click(function (e) {
+
+            e.preventDefault();
+            var nFrom = $(this).attr('data-from');
+            var nAlign = $(this).attr('data-align');
+            var nIcons = $(this).attr('data-icon');
+            var nType = $(this).attr('data-type');
+            var nAnimIn = $(this).attr('data-animation-in');
+            var nAnimOut = $(this).attr('data-animation-out');
+            var custommessage = $(this).attr('data-custommessage');
+            notify(nFrom, nAlign, nIcons, nType, nAnimIn, nAnimOut, custommessage);
+        });
+        /*
+         * Dialogs
+         */
+
+        //Basic
+        $('#sa-basic').click(function () {
+            swal("Here's a message!");
+        });
+
+        //A title with a text under
+        $('#sa-title').click(function () {
+            swal("Here's a message!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat, tincidunt vitae ipsum et, pellentesque maximus enim. Mauris eleifend ex semper, lobortis purus sed, pharetra felis")
+        });
+
+        //Success Message
+        $('#sa-success').click(function () {
+            swal("Good job!", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lorem erat, tincidunt vitae ipsum et, pellentesque maximus enim. Mauris eleifend ex semper, lobortis purus sed, pharetra felis", "success")
+        });
+
+        //Warning Message
+        $('#sa-warning').click(function () {
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            }, function () {
+                swal("Deleted!", "Your imaginary file has been deleted.", "success");
+            });
+        });
+
+        //Parameter
+        $('#sa-params').click(function () {
+            swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "No, cancel plx!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                } else {
+                    swal("Cancelled", "Your imaginary file is safe :)", "error");
+                }
+            });
+        });
+
+        //Custom Image
+
+
+        //Auto Close Timer
+        $('#sa-close').click(function () {
+            swal({
+                title: "Auto close alert!",
+                text: "I will close in 2 seconds.",
+                timer: 2000,
+                showConfirmButton: false
+            });
+        });
+        //$("#data-table-command").bootgrid({
+        //    css: {
+        //        icon: 'zmdi icon',
+        //        iconColumns: 'zmdi-view-module',
+        //        iconDown: 'zmdi-expand-more',
+        //        iconRefresh: 'zmdi-refresh',
+        //        iconUp: 'zmdi-expand-less'
+        //    },
+        //    formatters: {
+        //        "commands": function (column, row) {
+        //            return "<button type=\"button\" class=\"btn btn-icon command-edit\" data-row-id=\"" + row.id + "\"><span class=\"zmdi zmdi-delete\"></span></button> " +
+        //                "<button type=\"button\" class=\"btn btn-icon command-delete\" data-row-id=\"" + row.id + "\"><span class=\"zmdi zmdi-delete\"></span></button>";
+        //        }
+        //    },
+
+        //});
+
+        $("#data-table-basic").bootgrid({
+            css: {
+                icon: 'zmdi icon',
+                iconColumns: 'zmdi-view-module',
+                iconDown: 'zmdi-expand-more',
+                iconRefresh: 'zmdi-refresh',
+                iconUp: 'zmdi-expand-less'
+            },
+            formatters: {
+                "action": function (column, row) {
+                    return "<a type=\"button\" data-toggle=\"modal\" href=\"#AssignDelivery\" class=\"btn bgm-gray waves-effect\" title=\"Detail\"><i class=\"zmdi zmdi-eye\"></i></a>";
+                }
+            }
+
+
+        });
+
+    </script>
+    <%--<script src="http://cdn.jsdelivr.net/bootstrap.tagsinput/0.4.2/bootstrap-tagsinput.min.js"></script>--%>
+    <script>
+        
+    </script>
+    <script src="angular/progressbar/ngprogress.js"></script>
+    <link href="angular/progressbar/ngProgress.css" rel="stylesheet" />
+
+    <script>
+        //For moving up the lable by default
+        $(document).ready(function () {
+            $(".productedit .fg-line").addClass("fg-toggled");
+
+
+        });
+    </script>
+
+    <%--<script type="text/javascript">
+       $(document).ready(function () {
+           $(".data-table-basic").prepend($("<thead></thead>").append($(this).find("tr:first")));
+           $(".data-table-basic").bootgrid();
+           //$(".gvDataTable").dataTable();
+
+           //$(".dataTables_wrapper .dataTables_paginate .paginate_button").addClass("btn btn-primary");
+
+           //$(".paginate_button").click(function () {
+           //    $(".dataTables_wrapper .dataTables_paginate .paginate_button").addClass("btn btn-primary");
+           //});
+       });
+    </script>--%>
+</body>
+</html>

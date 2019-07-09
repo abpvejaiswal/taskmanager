@@ -1,0 +1,138 @@
+.openVideoWalkthroughGuideModal .modal-title {
+	line-height: 30px;
+}
+
+.openVideoWalkthroughGuideModal .modal-content {
+	border-radius: 8px;
+}
+
+.openVideoWalkthroughGuideModal .modal-body {
+	border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+	overflow: auto;
+	padding: 0;
+}
+
+.openVideoWalkthroughGuideModal .modal-body.padded-modal-body {
+	height: 348px;
+	padding: 40px;
+}
+	
+.openVideoWalkthroughGuideModal .walkthrough-guide-body-container {
+	padding-left: 0;
+	padding-right: 0;
+	height: 440px;
+}
+
+.openVideoWalkthroughGuideModal .walkthrough-guide-left-container {
+	background: #3d8cb1; /* For browsers that do not support gradients */
+  	background: -webkit-linear-gradient(left top, #3d8cb1, #646fa8); /* For Safari 5.1 to 6.0 */
+  	background: -o-linear-gradient(bottom right, #3d8cb1, #646fa8); /* For Opera 11.1 to 12.0 */
+  	background: -moz-linear-gradient(bottom right, #3d8cb1, #646fa8); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to bottom right, #3d8cb1, #646fa8);
+	color: #c8d9ef;
+	height: 100%;
+	overflow: auto;
+	width: 30%;
+}
+
+.openVideoWalkthroughGuideModal .video-list {
+	cursor: pointer;
+	display: inline-block;
+	font-weight: 400;
+	padding: 8px 0;
+}
+
+.openVideoWalkthroughGuideModal .video-list:hover,
+.openVideoWalkthroughGuideModal .video-list.selected-list {
+	color: #fff;
+	font-weight: 500;
+}
+
+.openVideoWalkthroughGuideModal .video-list:hover .circled-number,
+.openVideoWalkthroughGuideModal .video-list.selected-list .circled-number{
+	background: #fff;
+	color: #3d8cb1;
+}
+
+.openVideoWalkthroughGuideModal .video-list:hover .video-name,
+.openVideoWalkthroughGuideModal .video-list.selected-list .video-name {
+	text-decoration: underline;
+}
+
+.openVideoWalkthroughGuideModal .circled-number {
+	border: 1px solid;
+	border-radius: 50%;
+	display: inline-block;
+	float: left;
+	font-size: 12px;
+	height: 22px;
+	margin-right: 10px;
+	padding-top: 2px;
+	text-align: center;
+	width: 22px;
+}
+
+.openVideoWalkthroughGuideModal .circled-number.icon-soundNew {
+	padding-top: 4px;
+}
+	
+.openVideoWalkthroughGuideModal .video-name {
+	overflow: hidden;
+}
+
+.openVideoWalkthroughGuideModal .walkthrough-guide-right-container {
+	height: 100%;
+	padding: 0;
+	width: 70%;
+}
+
+.openVideoWalkthroughGuideModal .video-navigation-btn {
+	border-radius: 0;
+	padding-top: 12px;
+	padding-bottom: 12px;
+}
+
+.openVideoWalkthroughGuideModal .guide-icon-img {
+	background-image: url("../../images/video-tuts.png");
+	height: 70px;
+	margin: 10px 0;
+	width: 98px;
+}
+
+.openVideoWalkthroughGuideModal .right-side-footer-container {
+	overflow: auto;
+}
+
+.openVideoWalkthroughGuideModal .video-container {
+	background-color: #000;
+	height: 394px;
+}
+
+.openVideoWalkthroughGuideModal .modal-footer {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.openVideoWalkthroughGuideModal .okay-btn-container {
+	text-align: center;
+}
+
+.openVideoWalkthroughGuideModal .okay-btn {
+	border-radius: 8px;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	width: 33.33%;
+}
+
+.openVideoWalkthroughGuideModal .guide-text {
+    color: #4082c4;
+    font-size: 25px;
+    font-weight: 300;
+    padding-bottom: 40px;
+	text-align: center;
+}
+
+.openVideoWalkthroughGuideModal #guide-image {
+	max-width: 900px;
+}

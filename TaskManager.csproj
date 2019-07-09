@@ -1,0 +1,718 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{10CD44AC-3197-4596-8361-F71378E5AD06}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TaskManager</RootNamespace>
+    <AssemblyName>TaskManager</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>lib\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Common">
+      <HintPath>lib\Common.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tm-admin\AdminMaster.Master" />
+    <Content Include="tm-admin\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="tm-admin\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="tm-admin\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="tm-admin\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="tm-admin\fonts\glyphicons-halflings-regulard41d.eot" />
+    <Content Include="tm-admin\fonts\roboto\Roboto-Bold-webfont.eot" />
+    <Content Include="tm-admin\fonts\roboto\Roboto-Bold-webfont.ttf" />
+    <Content Include="tm-admin\fonts\roboto\Roboto-Bold-webfont.woff" />
+    <Content Include="tm-admin\fonts\roboto\Roboto-Bold-webfontd41d.eot" />
+    <Content Include="tm-admin\fonts\roboto\Roboto-Light-webfont.eot" />
+    <Content Include="tm-admin\fonts\roboto\Roboto-Light-webfont.ttf" />
+    <Content Include="tm-admin\fonts\roboto\Roboto-Light-webfont.woff" />
+    <Content Include="tm-admin\fonts\roboto\Roboto-Light-webfontd41d.eot" />
+    <Content Include="tm-admin\fonts\roboto\Roboto-Medium-webfont.eot" />
+    <Content Include="tm-admin\fonts\roboto\Roboto-Medium-webfont.ttf" />
+    <Content Include="tm-admin\fonts\roboto\Roboto-Medium-webfont.woff" />
+    <Content Include="tm-admin\fonts\roboto\Roboto-Medium-webfontd41d.eot" />
+    <Content Include="tm-admin\fonts\roboto\Roboto-Regular-webfont.eot" />
+    <Content Include="tm-admin\fonts\roboto\Roboto-Regular-webfont.ttf" />
+    <Content Include="tm-admin\fonts\roboto\Roboto-Regular-webfont.woff" />
+    <Content Include="tm-admin\fonts\roboto\Roboto-Regular-webfontd41d.eot" />
+    <Content Include="tm-admin\fonts\weather-icons\weather-icons.eot" />
+    <Content Include="tm-admin\fonts\weather-icons\weather-icons.ttf" />
+    <Content Include="tm-admin\fonts\weather-icons\weather-icons.woff" />
+    <Content Include="tm-admin\fonts\weather-icons\weather-iconsd41d.eot" />
+    <Content Include="tm-admin\img\logo\Don%27t Delay.jpg" />
+    <Content Include="tm-admin\img\logo\favicon.png" />
+    <Content Include="tm-admin\img\logo\logo.jpg" />
+    <Content Include="tm-admin\img\logo\logo.png" />
+    <Content Include="tm-admin\scss\gsdk-bootstrap-wizard.scss" />
+    <Content Include="tm-admin\scss\gsdk-bootstrap-wizard\mixins\_vendor-prefixes.scss" />
+    <Content Include="tm-admin\scss\gsdk-bootstrap-wizard\_buttons.scss" />
+    <Content Include="tm-admin\scss\gsdk-bootstrap-wizard\_card.scss" />
+    <Content Include="tm-admin\scss\gsdk-bootstrap-wizard\_footers.scss" />
+    <Content Include="tm-admin\scss\gsdk-bootstrap-wizard\_inputs.scss" />
+    <Content Include="tm-admin\scss\gsdk-bootstrap-wizard\_labels.scss" />
+    <Content Include="tm-admin\scss\gsdk-bootstrap-wizard\_misc.scss" />
+    <Content Include="tm-admin\scss\gsdk-bootstrap-wizard\_mixins.scss" />
+    <Content Include="tm-admin\scss\gsdk-bootstrap-wizard\_navs-pagination.scss" />
+    <Content Include="tm-admin\scss\gsdk-bootstrap-wizard\_responsive.scss" />
+    <Content Include="tm-admin\scss\gsdk-bootstrap-wizard\_tooltips.scss" />
+    <Content Include="tm-admin\scss\gsdk-bootstrap-wizard\_typography.scss" />
+    <Content Include="tm-admin\scss\gsdk-bootstrap-wizard\_variables.scss" />
+    <Content Include="tm-admin\scss\gsdk-bootstrap-wizard\_wizard-card.scss" />
+    <Content Include="tm-admin\vendors\bower_components\lightgallery\light-gallery\fonts\Slide-icons.eot" />
+    <Content Include="tm-admin\vendors\bower_components\material-design-iconic-font\dist\fonts\Material-Design-Iconic-Fontf066.ttf" />
+    <Content Include="tm-admin\vendors\bower_components\material-design-iconic-font\dist\fonts\Material-Design-Iconic-Fontf066.woff" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AdminOperation.asmx" />
+    <Content Include="ControllerServices.asmx" />
+    <Content Include="Default.aspx" />
+    <Content Include="tm-admin\AddEmployeeMenu.aspx" />
+    <Content Include="tm-admin\AllTask.aspx" />
+    <Content Include="tm-admin\angular\angular-uuid4.js" />
+    <Content Include="tm-admin\angular\angular.min.js" />
+    <Content Include="tm-admin\angular\assets\images\arrow_down.png" />
+    <Content Include="tm-admin\angular\assets\images\check-circle-blue.png" />
+    <Content Include="tm-admin\angular\assets\images\jd-sprites.png" />
+    <Content Include="tm-admin\angular\assets\images\video-tuts.png" />
+    <Content Include="tm-admin\angular\assets\pos\images\icon-warning-red.png" />
+    <Content Include="tm-admin\angular\assets\scripts\initialize9e71.js" />
+    <Content Include="tm-admin\angular\assets\scripts\libs\require\require9e71.js" />
+    <Content Include="tm-admin\angular\assets\scripts\libs\socket.js" />
+    <Content Include="tm-admin\angular\assets\styles\common\add-new-customer9e71.css" />
+    <Content Include="tm-admin\angular\assets\styles\common\app9e71.css" />
+    <Content Include="tm-admin\angular\assets\styles\common\font9e71.css" />
+    <Content Include="tm-admin\angular\assets\styles\common\leftmenu9e71.css" />
+    <Content Include="tm-admin\angular\assets\styles\common\videoGuideModal9e71.css" />
+    <Content Include="tm-admin\angular\assets\styles\minify\webMain9e71.css" />
+    <Content Include="tm-admin\angular\assets\styles\pos\pos9e71.css" />
+    <Content Include="tm-admin\angular\assets\styles\vendor\app.css" />
+    <Content Include="tm-admin\angular\assets\styles\vendor\bootstrap.css" />
+    <Content Include="tm-admin\angular\assets\styles\vendor\font\fonts\icomoon5167-2.html" />
+    <Content Include="tm-admin\angular\assets\styles\vendor\font\fonts\icomoon5167-3.html" />
+    <Content Include="tm-admin\angular\assets\styles\vendor\font\fonts\icomoon5167-4.html" />
+    <Content Include="tm-admin\angular\assets\styles\vendor\font\fonts\icomoon5167.html" />
+    <Content Include="tm-admin\angular\assets\styles\vendor\font\style9e71.css" />
+    <Content Include="tm-admin\angular\assets\styles\vendor\row-fluid-159e71.css" />
+    <Content Include="tm-admin\angular\assets\styles\web\common\directive9e71.css" />
+    <Content Include="tm-admin\angular\assets\styles\web\common\landing-page-tabs9e71.css" />
+    <Content Include="tm-admin\angular\assets\styles\web\common\style9e71.css" />
+    <Content Include="tm-admin\angular\assets\styles\web\custom9e71.css" />
+    <Content Include="tm-admin\angular\assets\styles\web\email\emailPage9e71.css" />
+    <Content Include="tm-admin\angular\assets\styles\web\mediaQuery9e71.css" />
+    <Content Include="tm-admin\angular\assets\styles\web\online-store\customizeOnlineStorePage9e71.css" />
+    <Content Include="tm-admin\angular\assets\styles\web\override9e71.css" />
+    <Content Include="tm-admin\angular\assets\styles\web\product\productList9e71.css" />
+    <Content Include="tm-admin\angular\assets\styles\web\product\variantTableStyle9e71.css" />
+    <Content Include="tm-admin\angular\assets\styles\web\quick-start\quickStart9e71.css" />
+    <Content Include="tm-admin\angular\assets\templates\web\GET.html" />
+    <Content Include="tm-admin\angular\assets\templates\web\index.html" />
+    <Content Include="tm-admin\angular\assets\templates\web\{{global.html" />
+    <Content Include="tm-admin\angular\BrandMasterController.js" />
+    <Content Include="tm-admin\angular\CategoryApp.js" />
+    <Content Include="tm-admin\angular\CustomerController.js" />
+    <Content Include="tm-admin\angular\datatable\angular-datatables.js" />
+    <Content Include="tm-admin\angular\datatable\jquery.dataTables.min.js" />
+    <Content Include="tm-admin\angular\DispatchNote.js" />
+    <Content Include="tm-admin\angular\EnquiryController.js" />
+    <Content Include="tm-admin\angular\HistoryController.js" />
+    <Content Include="tm-admin\angular\loading-bar.css" />
+    <Content Include="tm-admin\angular\loading-bar.js" />
+    <Content Include="tm-admin\angular\MaterialMasterController.js" />
+    <Content Include="tm-admin\angular\MeetingDetailApp.js" />
+    <Content Include="tm-admin\angular\NotificationController.js" />
+    <Content Include="tm-admin\angular\OrderAcceptanceController.js" />
+    <Content Include="tm-admin\angular\OrderController.js" />
+    <Content Include="tm-admin\angular\ProductController.js" />
+    <Content Include="tm-admin\angular\ProductEditController.js" />
+    <Content Include="tm-admin\angular\ProformaInvoiceController.js" />
+    <Content Include="tm-admin\angular\progressbar\ngProgress.css" />
+    <Content Include="tm-admin\angular\progressbar\ngprogress.js" />
+    <Content Include="tm-admin\angular\progressbar\ngprogress.min.js" />
+    <Content Include="tm-admin\angular\QuotationController.js" />
+    <Content Include="tm-admin\angular\ToDoListController.js" />
+    <Content Include="tm-admin\NatureWorkMaster.aspx" />
+    <Content Include="tm-admin\ContactMaster.aspx" />
+    <Content Include="tm-admin\ClientGroupMaster.aspx" />
+    <Content Include="tm-admin\ChangePassword.aspx" />
+    <Content Include="tm-admin\code.jquery.com\ajax.js" />
+    <Content Include="tm-admin\code.jquery.com\bootstrap-datepicker.js" />
+    <Content Include="tm-admin\code.jquery.com\bootstrap.min.css" />
+    <Content Include="tm-admin\code.jquery.com\bootstrap.min.js" />
+    <Content Include="tm-admin\code.jquery.com\css\app.min.1.css" />
+    <Content Include="tm-admin\code.jquery.com\css\app.min.2.css" />
+    <Content Include="tm-admin\code.jquery.com\datepicker.css" />
+    <Content Include="tm-admin\code.jquery.com\ie.js" />
+    <Content Include="tm-admin\code.jquery.com\jquery-1.11.2.min.js" />
+    <Content Include="tm-admin\code.jquery.com\ui\1.11.2\jquery-ui.min.js" />
+    <Content Include="tm-admin\code.jquery.com\ui\1.11.2\themes\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="tm-admin\code.jquery.com\ui\1.11.2\themes\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="tm-admin\code.jquery.com\ui\1.11.2\themes\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="tm-admin\code.jquery.com\ui\1.11.2\themes\smoothness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="tm-admin\code.jquery.com\ui\1.11.2\themes\smoothness\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="tm-admin\code.jquery.com\ui\1.11.2\themes\smoothness\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="tm-admin\code.jquery.com\ui\1.11.2\themes\smoothness\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="tm-admin\code.jquery.com\ui\1.11.2\themes\smoothness\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="tm-admin\code.jquery.com\ui\1.11.2\themes\smoothness\images\ui-icons_222222_256x240.png" />
+    <Content Include="tm-admin\code.jquery.com\ui\1.11.2\themes\smoothness\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="tm-admin\code.jquery.com\ui\1.11.2\themes\smoothness\images\ui-icons_454545_256x240.png" />
+    <Content Include="tm-admin\code.jquery.com\ui\1.11.2\themes\smoothness\images\ui-icons_888888_256x240.png" />
+    <Content Include="tm-admin\code.jquery.com\ui\1.11.2\themes\smoothness\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="tm-admin\code.jquery.com\ui\1.11.2\themes\smoothness\jquery-ui.min.css" />
+    <Content Include="tm-admin\CreateTask.aspx" />
+    <Content Include="tm-admin\css\app.min.1.css" />
+    <Content Include="tm-admin\css\app.min.2.css" />
+    <Content Include="tm-admin\css\bootstrap.min.css" />
+    <Content Include="tm-admin\css\demo.css" />
+    <Content Include="tm-admin\css\gsdk-bootstrap-wizard.css" />
+    <Content Include="tm-admin\Dashboard.aspx" />
+    <Content Include="tm-admin\Default.aspx" />
+    <Content Include="tm-admin\EmployeeMaster.aspx" />
+    <Content Include="tm-admin\external\editor.css" />
+    <Content Include="tm-admin\external\editor.js" />
+    <Content Include="tm-admin\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="tm-admin\fonts\roboto\Roboto-Bold-webfont.svg" />
+    <Content Include="tm-admin\fonts\roboto\Roboto-Light-webfont.svg" />
+    <Content Include="tm-admin\fonts\roboto\Roboto-Medium-webfont.svg" />
+    <Content Include="tm-admin\fonts\roboto\Roboto-Regular-webfont.svg" />
+    <Content Include="tm-admin\fonts\shadowsintolight\shadowsintolight-webfont-2.html" />
+    <Content Include="tm-admin\fonts\shadowsintolight\shadowsintolight-webfont-3.html" />
+    <Content Include="tm-admin\fonts\shadowsintolight\shadowsintolight-webfont-4.html" />
+    <Content Include="tm-admin\fonts\shadowsintolight\shadowsintolight-webfont.html" />
+    <Content Include="tm-admin\fonts\shadowsintolight\shadowsintolight-webfontd41d.html" />
+    <Content Include="tm-admin\fonts\weather-icons\weather-icons.svg" />
+    <Content Include="tm-admin\Home.aspx" />
+    <Content Include="tm-admin\img\300x200.gif" />
+    <Content Include="tm-admin\img\cal-header.jpg" />
+    <Content Include="tm-admin\img\contacts\1.jpg" />
+    <Content Include="tm-admin\img\contacts\10.jpg" />
+    <Content Include="tm-admin\img\contacts\11.jpg" />
+    <Content Include="tm-admin\img\contacts\12.jpg" />
+    <Content Include="tm-admin\img\contacts\13.jpg" />
+    <Content Include="tm-admin\img\contacts\14.jpg" />
+    <Content Include="tm-admin\img\contacts\15.jpg" />
+    <Content Include="tm-admin\img\contacts\16.jpg" />
+    <Content Include="tm-admin\img\contacts\2.jpg" />
+    <Content Include="tm-admin\img\contacts\3.jpg" />
+    <Content Include="tm-admin\img\contacts\4.jpg" />
+    <Content Include="tm-admin\img\contacts\5.jpg" />
+    <Content Include="tm-admin\img\contacts\6.jpg" />
+    <Content Include="tm-admin\img\contacts\7.jpg" />
+    <Content Include="tm-admin\img\contacts\8.jpg" />
+    <Content Include="tm-admin\img\contacts\9.jpg" />
+    <Content Include="tm-admin\img\demo\invoice-logo.png" />
+    <Content Include="tm-admin\img\demo\map.png" />
+    <Content Include="tm-admin\img\headers\4.png" />
+    <Content Include="tm-admin\img\headers\sm\1.png" />
+    <Content Include="tm-admin\img\headers\sm\2.png" />
+    <Content Include="tm-admin\img\headers\sm\3.png" />
+    <Content Include="tm-admin\img\headers\sm\4.png" />
+    <Content Include="tm-admin\img\headers\sm\5.png" />
+    <Content Include="tm-admin\img\headers\sm\6.png" />
+    <Content Include="tm-admin\img\headers\sm\7.png" />
+    <Content Include="tm-admin\img\headers\sm\8.png" />
+    <Content Include="tm-admin\img\headers\sm\9.png" />
+    <Content Include="tm-admin\img\headers\square\1.png" />
+    <Content Include="tm-admin\img\headers\square\2.png" />
+    <Content Include="tm-admin\img\headers\square\3.png" />
+    <Content Include="tm-admin\img\headers\square\4.png" />
+    <Content Include="tm-admin\img\headers\square\5.png" />
+    <Content Include="tm-admin\img\headers\square\6.png" />
+    <Content Include="tm-admin\img\headers\square\7.png" />
+    <Content Include="tm-admin\img\headers\square\8.png" />
+    <Content Include="tm-admin\img\headers\square\9.png" />
+    <Content Include="tm-admin\img\icons\ellipsis%402x.png" />
+    <Content Include="tm-admin\img\icons\ellipsis.png" />
+    <Content Include="tm-admin\img\icons\fullscreen%402x.png" />
+    <Content Include="tm-admin\img\icons\fullscreen.png" />
+    <Content Include="tm-admin\img\icons\menu-2%402x.png" />
+    <Content Include="tm-admin\img\icons\menu-2.png" />
+    <Content Include="tm-admin\img\icons\message%402x.png" />
+    <Content Include="tm-admin\img\icons\message.png" />
+    <Content Include="tm-admin\img\icons\notification%402x.png" />
+    <Content Include="tm-admin\img\icons\notification.png" />
+    <Content Include="tm-admin\img\icons\pause%402x.png" />
+    <Content Include="tm-admin\img\icons\pause.png" />
+    <Content Include="tm-admin\img\icons\play%402x.png" />
+    <Content Include="tm-admin\img\icons\play.png" />
+    <Content Include="tm-admin\img\icons\search%402x.png" />
+    <Content Include="tm-admin\img\icons\search-2%402x.png" />
+    <Content Include="tm-admin\img\icons\search-2.png" />
+    <Content Include="tm-admin\img\icons\search.png" />
+    <Content Include="tm-admin\img\icons\speaker%402x.png" />
+    <Content Include="tm-admin\img\icons\speaker-2%402x.png" />
+    <Content Include="tm-admin\img\icons\speaker-2.png" />
+    <Content Include="tm-admin\img\icons\speaker.png" />
+    <Content Include="tm-admin\img\icons\task%402x.png" />
+    <Content Include="tm-admin\img\icons\task.png" />
+    <Content Include="tm-admin\img\icons\weather\0%402x.png" />
+    <Content Include="tm-admin\img\icons\weather\0.png" />
+    <Content Include="tm-admin\img\icons\weather\1%402x.png" />
+    <Content Include="tm-admin\img\icons\weather\1.png" />
+    <Content Include="tm-admin\img\icons\weather\18%402x.png" />
+    <Content Include="tm-admin\img\icons\weather\18.png" />
+    <Content Include="tm-admin\img\icons\weather\19%402x.png" />
+    <Content Include="tm-admin\img\icons\weather\19.png" />
+    <Content Include="tm-admin\img\icons\weather\2%402x.png" />
+    <Content Include="tm-admin\img\icons\weather\2.png" />
+    <Content Include="tm-admin\img\icons\weather\24%402x.png" />
+    <Content Include="tm-admin\img\icons\weather\24.png" />
+    <Content Include="tm-admin\img\icons\weather\26%402x.png" />
+    <Content Include="tm-admin\img\icons\weather\26.png" />
+    <Content Include="tm-admin\img\icons\weather\27%402x.png" />
+    <Content Include="tm-admin\img\icons\weather\27.png" />
+    <Content Include="tm-admin\img\icons\weather\28%402x.png" />
+    <Content Include="tm-admin\img\icons\weather\28.png" />
+    <Content Include="tm-admin\img\icons\weather\3%402x.png" />
+    <Content Include="tm-admin\img\icons\weather\3.png" />
+    <Content Include="tm-admin\img\icons\weather\31%402x.png" />
+    <Content Include="tm-admin\img\icons\weather\31.png" />
+    <Content Include="tm-admin\img\icons\weather\32%402x.png" />
+    <Content Include="tm-admin\img\icons\weather\32.png" />
+    <Content Include="tm-admin\img\icons\weather\5%402x.png" />
+    <Content Include="tm-admin\img\icons\weather\5.png" />
+    <Content Include="tm-admin\img\icons\weather\9%402x.png" />
+    <Content Include="tm-admin\img\icons\weather\9.png" />
+    <Content Include="tm-admin\img\notifications.png" />
+    <Content Include="tm-admin\img\profile-menu.png" />
+    <Content Include="tm-admin\img\profile-noimage.png" />
+    <Content Include="tm-admin\img\profile-pics\1.jpg" />
+    <Content Include="tm-admin\img\profile-pics\2.jpg" />
+    <Content Include="tm-admin\img\profile-pics\3.jpg" />
+    <Content Include="tm-admin\img\profile-pics\4.jpg" />
+    <Content Include="tm-admin\img\profile-pics\5.jpg" />
+    <Content Include="tm-admin\img\profile-pics\6.jpg" />
+    <Content Include="tm-admin\img\profile-pics\7.jpg" />
+    <Content Include="tm-admin\img\profile-pics\8.jpg" />
+    <Content Include="tm-admin\img\profile-pics\9.jpg" />
+    <Content Include="tm-admin\img\profile-pics\profile-pic-2.jpg" />
+    <Content Include="tm-admin\img\profile-pics\profile-pic.jpg" />
+    <Content Include="tm-admin\img\QRcode\Img1120090774.png" />
+    <Content Include="tm-admin\img\QRcode\Img2134779103.png" />
+    <Content Include="tm-admin\img\QRcode\Img387993970.png" />
+    <Content Include="tm-admin\img\QRcode\Img457491643.png" />
+    <Content Include="tm-admin\img\Rolling.gif" />
+    <Content Include="tm-admin\img\select%402x.png" />
+    <Content Include="tm-admin\img\select.png" />
+    <Content Include="tm-admin\img\social\blogger-128.png" />
+    <Content Include="tm-admin\img\social\facebook-128.png" />
+    <Content Include="tm-admin\img\social\googleplus-128.png" />
+    <Content Include="tm-admin\img\social\linkedin-128.png" />
+    <Content Include="tm-admin\img\social\twitter-128.png" />
+    <Content Include="tm-admin\img\social\youtube-128.png" />
+    <Content Include="tm-admin\img\thumb_list_place.png" />
+    <Content Include="tm-admin\img\thumb_register.png" />
+    <Content Include="tm-admin\img\widgets\535.jpg" />
+    <Content Include="tm-admin\img\widgets\alpha.jpg" />
+    <Content Include="tm-admin\img\widgets\mate7.jpg" />
+    <Content Include="tm-admin\img\widgets\note4.jpg" />
+    <Content Include="tm-admin\img\widgets\preview.jpg" />
+    <Content Include="tm-admin\img\wizard-boat.jpg" />
+    <Content Include="tm-admin\img\wizard-city.jpg" />
+    <Content Include="tm-admin\img\wizard.jpg" />
+    <Content Include="tm-admin\YearMaster.aspx" />
+    <Content Include="tm-admin\js\bootstrap.min.js" />
+    <Content Include="tm-admin\js\charts.js" />
+    <Content Include="tm-admin\js\demo.js" />
+    <Content Include="tm-admin\js\flot-charts\bar-chart.js" />
+    <Content Include="tm-admin\js\flot-charts\curved-line-chart.js" />
+    <Content Include="tm-admin\js\flot-charts\dynamic-chart.js" />
+    <Content Include="tm-admin\js\flot-charts\line-chart.js" />
+    <Content Include="tm-admin\js\flot-charts\pie-chart.js" />
+    <Content Include="tm-admin\js\functions.js" />
+    <Content Include="tm-admin\js\gsdk-bootstrap-wizard.js" />
+    <Content Include="tm-admin\js\jquery-1.10.2.js" />
+    <Content Include="tm-admin\js\jquery-2.2.4.min.js" />
+    <Content Include="tm-admin\js\jquery.bootstrap.wizard.js" />
+    <Content Include="tm-admin\js\jquery.validate.min.js" />
+    <Content Include="tm-admin\Logout.aspx" />
+    <Content Include="tm-admin\media\big_buck_bunny-2.html" />
+    <Content Include="tm-admin\media\big_buck_bunny.html" />
+    <Content Include="tm-admin\media\big_buck_bunny.jpg" />
+    <Content Include="tm-admin\media\big_buck_bunny.mp4" />
+    <Content Include="tm-admin\media\carousel\c-1.jpg" />
+    <Content Include="tm-admin\media\carousel\c-2.jpg" />
+    <Content Include="tm-admin\media\carousel\c-3.jpg" />
+    <Content Include="tm-admin\media\flashmediaelement.swf" />
+    <Content Include="tm-admin\media\gallery\1.jpg" />
+    <Content Include="tm-admin\media\gallery\10.jpg" />
+    <Content Include="tm-admin\media\gallery\11.jpg" />
+    <Content Include="tm-admin\media\gallery\12.jpg" />
+    <Content Include="tm-admin\media\gallery\13.jpg" />
+    <Content Include="tm-admin\media\gallery\14.jpg" />
+    <Content Include="tm-admin\media\gallery\15.jpg" />
+    <Content Include="tm-admin\media\gallery\16.jpg" />
+    <Content Include="tm-admin\media\gallery\17.jpg" />
+    <Content Include="tm-admin\media\gallery\18.jpg" />
+    <Content Include="tm-admin\media\gallery\19.jpg" />
+    <Content Include="tm-admin\media\gallery\2.jpg" />
+    <Content Include="tm-admin\media\gallery\20.jpg" />
+    <Content Include="tm-admin\media\gallery\21.jpg" />
+    <Content Include="tm-admin\media\gallery\22.jpg" />
+    <Content Include="tm-admin\media\gallery\23.jpg" />
+    <Content Include="tm-admin\media\gallery\24.jpg" />
+    <Content Include="tm-admin\media\gallery\3.jpg" />
+    <Content Include="tm-admin\media\gallery\4.jpg" />
+    <Content Include="tm-admin\media\gallery\5.jpg" />
+    <Content Include="tm-admin\media\gallery\6.jpg" />
+    <Content Include="tm-admin\media\gallery\7.jpg" />
+    <Content Include="tm-admin\media\gallery\8.jpg" />
+    <Content Include="tm-admin\media\gallery\9.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\1.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\10.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\11.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\12.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\13.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\14.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\15.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\16.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\17.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\18.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\19.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\2.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\20.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\21.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\22.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\23.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\24.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\3.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\4.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\5.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\6.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\7.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\8.jpg" />
+    <Content Include="tm-admin\media\gallery\thumbs\9.jpg" />
+    <Content Include="tm-admin\MenuMaster.aspx" />
+    <Content Include="tm-admin\MyDetail.aspx" />
+    <Content Include="tm-admin\MyTask.aspx" />
+    <Content Include="tm-admin\MyTaskReport.aspx" />
+    <Content Include="tm-admin\StateMaster.aspx" />
+    <Content Include="tm-admin\UserControls\UserPanelLeft.ascx" />
+    <Content Include="tm-admin\vendors\bootgrid\jquery.bootgrid.min.css" />
+    <Content Include="tm-admin\vendors\bootgrid\jquery.bootgrid.min.js" />
+    <Content Include="tm-admin\vendors\bootstrap-growl\bootstrap-growl.min.js" />
+    <Content Include="tm-admin\vendors\bootstrap-wizard\jquery.bootstrap.wizard.min.js" />
+    <Content Include="tm-admin\vendors\bower_components\animate.css\animate.min.css" />
+    <Content Include="tm-admin\vendors\bower_components\autosize\dist\autosize.min.js" />
+    <Content Include="tm-admin\vendors\bower_components\bootstrap-select\dist\css\bootstrap-select.css" />
+    <Content Include="tm-admin\vendors\bower_components\bootstrap-select\dist\js\bootstrap-select.js" />
+    <Content Include="tm-admin\vendors\bower_components\bootstrap-sweetalert\lib\sweet-alert.css" />
+    <Content Include="tm-admin\vendors\bower_components\bootstrap-sweetalert\lib\sweet-alert.min.js" />
+    <Content Include="tm-admin\vendors\bower_components\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Include="tm-admin\vendors\bower_components\eonasdan-bootstrap-datetimepicker\build\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="tm-admin\vendors\bower_components\eonasdan-bootstrap-datetimepicker\build\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="tm-admin\vendors\bower_components\flot-orderBars\js\jquery.flot.orderBars.js" />
+    <Content Include="tm-admin\vendors\bower_components\flot.curvedlines\curvedLines.js" />
+    <Content Include="tm-admin\vendors\bower_components\flot.tooltip\js\jquery.flot.tooltip.min.js" />
+    <Content Include="tm-admin\vendors\bower_components\flot\jquery.flot.js" />
+    <Content Include="tm-admin\vendors\bower_components\flot\jquery.flot.pie.js" />
+    <Content Include="tm-admin\vendors\bower_components\flot\jquery.flot.resize.js" />
+    <Content Include="tm-admin\vendors\bower_components\fullcalendar\dist\fullcalendar.min.css" />
+    <Content Include="tm-admin\vendors\bower_components\fullcalendar\dist\fullcalendar.min.js" />
+    <Content Include="tm-admin\vendors\bower_components\jquery.easy-pie-chart\dist\jquery.easypiechart.min.js" />
+    <Content Include="tm-admin\vendors\bower_components\jquery.nicescroll\jquery.nicescroll.min.js" />
+    <Content Include="tm-admin\vendors\bower_components\jquery\dist\jquery.min.js" />
+    <Content Include="tm-admin\vendors\bower_components\lightgallery\light-gallery\css\lightGallery.css" />
+    <Content Include="tm-admin\vendors\bower_components\lightgallery\light-gallery\img\loading.gif" />
+    <Content Include="tm-admin\vendors\bower_components\lightgallery\light-gallery\js\lightGallery.min.js" />
+    <Content Include="tm-admin\vendors\bower_components\material-design-iconic-font\dist\css\material-design-iconic-font.min.css" />
+    <Content Include="tm-admin\vendors\bower_components\mediaelement\build\background.png" />
+    <Content Include="tm-admin\vendors\bower_components\mediaelement\build\bigplay.png" />
+    <Content Include="tm-admin\vendors\bower_components\mediaelement\build\bigplay.svg" />
+    <Content Include="tm-admin\vendors\bower_components\mediaelement\build\controls.png" />
+    <Content Include="tm-admin\vendors\bower_components\mediaelement\build\controls.svg" />
+    <Content Include="tm-admin\vendors\bower_components\mediaelement\build\loading.gif" />
+    <Content Include="tm-admin\vendors\bower_components\mediaelement\build\mediaelement-and-player.js" />
+    <Content Include="tm-admin\vendors\bower_components\mediaelement\build\mediaelement-and-player.min.js" />
+    <Content Include="tm-admin\vendors\bower_components\mediaelement\build\mediaelementplayer.css" />
+    <Content Include="tm-admin\vendors\bower_components\mediaelement\build\skipback.png" />
+    <Content Include="tm-admin\vendors\bower_components\moment\min\moment.min.js" />
+    <Content Include="tm-admin\vendors\bower_components\nouislider\distribute\jquery.nouislider.all.min.js" />
+    <Content Include="tm-admin\vendors\bower_components\nouislider\distribute\jquery.nouislider.min.css" />
+    <Content Include="tm-admin\vendors\bower_components\simpleWeather\jquery.simpleWeather.min.js" />
+    <Content Include="tm-admin\vendors\bower_components\summernote\dist\summernote.css" />
+    <Content Include="tm-admin\vendors\bower_components\summernote\dist\summernote.min.js" />
+    <Content Include="tm-admin\vendors\bower_components\typeahead.js\dist\typeahead.bundle.min.js" />
+    <Content Include="tm-admin\vendors\bower_components\Waves\dist\waves.min.js" />
+    <Content Include="tm-admin\vendors\chosen_v1.4.2\chosen.jquery.min.js" />
+    <Content Include="tm-admin\vendors\chosen_v1.4.2\chosen.min.css" />
+    <Content Include="tm-admin\vendors\farbtastic\farbtastic.css" />
+    <Content Include="tm-admin\vendors\farbtastic\farbtastic.min.js" />
+    <Content Include="tm-admin\vendors\farbtastic\marker.png" />
+    <Content Include="tm-admin\vendors\farbtastic\mask.png" />
+    <Content Include="tm-admin\vendors\farbtastic\wheel.png" />
+    <Content Include="tm-admin\vendors\fileinput\fileinput.min.js" />
+    <Content Include="tm-admin\vendors\input-mask\input-mask.min.js" />
+    <Content Include="tm-admin\vendors\sparklines\jquery.sparkline.min.js" />
+    <Content Include="tm-admin\ViewProfile.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdminOperation.asmx.cs">
+      <DependentUpon>AdminOperation.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ControllerServices.asmx.cs">
+      <DependentUpon>ControllerServices.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\AddEmployeeMenu.aspx.cs">
+      <DependentUpon>AddEmployeeMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\AddEmployeeMenu.aspx.designer.cs">
+      <DependentUpon>AddEmployeeMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\AdminMaster.Master.cs">
+      <DependentUpon>AdminMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\AdminMaster.Master.designer.cs">
+      <DependentUpon>AdminMaster.Master</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\AllTask.aspx.cs">
+      <DependentUpon>AllTask.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\AllTask.aspx.designer.cs">
+      <DependentUpon>AllTask.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\NatureWorkMaster.aspx.cs">
+      <DependentUpon>NatureWorkMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\NatureWorkMaster.aspx.designer.cs">
+      <DependentUpon>NatureWorkMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\ContactMaster.aspx.cs">
+      <DependentUpon>ContactMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\ContactMaster.aspx.designer.cs">
+      <DependentUpon>ContactMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\ClientGroupMaster.aspx.cs">
+      <DependentUpon>ClientGroupMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\ClientGroupMaster.aspx.designer.cs">
+      <DependentUpon>ClientGroupMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\CreateTask.aspx.cs">
+      <DependentUpon>CreateTask.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\CreateTask.aspx.designer.cs">
+      <DependentUpon>CreateTask.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\EmployeeMaster.aspx.cs">
+      <DependentUpon>EmployeeMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\EmployeeMaster.aspx.designer.cs">
+      <DependentUpon>EmployeeMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\YearMaster.aspx.cs">
+      <DependentUpon>YearMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\YearMaster.aspx.designer.cs">
+      <DependentUpon>YearMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\MenuMaster.aspx.cs">
+      <DependentUpon>MenuMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\MenuMaster.aspx.designer.cs">
+      <DependentUpon>MenuMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\MyDetail.aspx.cs">
+      <DependentUpon>MyDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\MyDetail.aspx.designer.cs">
+      <DependentUpon>MyDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\MyTask.aspx.cs">
+      <DependentUpon>MyTask.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\MyTask.aspx.designer.cs">
+      <DependentUpon>MyTask.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\MyTaskReport.aspx.cs">
+      <DependentUpon>MyTaskReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\MyTaskReport.aspx.designer.cs">
+      <DependentUpon>MyTaskReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\StateMaster.aspx.cs">
+      <DependentUpon>StateMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\StateMaster.aspx.designer.cs">
+      <DependentUpon>StateMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\UserControls\UserPanelLeft.ascx.cs">
+      <DependentUpon>UserPanelLeft.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\UserControls\UserPanelLeft.ascx.designer.cs">
+      <DependentUpon>UserPanelLeft.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="tm-admin\ViewProfile.aspx.cs">
+      <DependentUpon>ViewProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="tm-admin\ViewProfile.aspx.designer.cs">
+      <DependentUpon>ViewProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Compress.cs" />
+    <Compile Include="Models\Connection.cs" />
+    <Compile Include="Models\ControllerServiceObject.cs" />
+    <Compile Include="Models\GetData.cs" />
+    <Compile Include="Models\Imager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="tm-admin\pdf\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>18344</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:18344/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

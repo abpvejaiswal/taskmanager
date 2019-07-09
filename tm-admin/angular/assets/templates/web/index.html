@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en" class=""  ng-app="myApp" ng-controller="SellerAdmin.Controller.Main">
+
+<!-- Mirrored from www.jdomni.com/marketplace/static/templates/web/index.htm by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Feb 2017 06:01:38 GMT -->
+<head>  
+	<meta charset="utf-8" />
+	<title ng-bind="title"></title>
+	<script>
+		(function(_,e,rr,s){_errs=[s];var c=_.onerror;_.onerror=function(){var a=arguments;_errs.push(a);
+		c&&c.apply(this,a)};var b=function(){var c=e.createElement(rr),b=e.getElementsByTagName(rr)[0];
+		c.src="//beacon.errorception.com/"+s+".js";c.async=!0;b.parentNode.insertBefore(c,b)};
+		_.addEventListener?_.addEventListener("load",b,!1):_.attachEvent("onload",b)})
+		(window,document,"script","55a4b35524c27712260002f9");
+	</script>
+	<script type="text/javascript" src="../../scripts/initialize9e71.js?69316-170217-2032">
+	</script>
+
+	<script type="text/javascript" src="../../scripts/libs/socket.js">
+	</script>
+
+	<meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	
+	<!--Vendor CSS STARTS-->
+	<script type="text/javascript">
+		if(App.production == "true"){
+			App.loadCSS("../../styles/minify/webMain9e71.css?69316-170217-2032");
+			App.loadCSS("../../styles/vendor/font/style9e71.css?69316-170217-2032");
+			App.loadCSS("../../styles/common/font9e71.css?69316-170217-2032");
+		}
+		else{
+			App.loadCSS("../../styles/vendor/app.css");
+			App.loadCSS("../../styles/vendor/bootstrap.css");
+			//App.loadCSS("/marketplace/static/styles/vendor/bootstrap-tokenfield.css");
+			//App.loadCSS("/marketplace/static/styles/vendor/jquery-ui.css");
+			//App.loadCSS("/marketplace/static/styles/vendor/animate.css");
+			App.loadCSS("../../styles/vendor/font/style9e71.css?69316-170217-2032");
+			App.loadCSS("../../styles/vendor/row-fluid-159e71.css?69316-170217-2032");
+			//App.loadCSS("/marketplace/static/styles/vendor/daterangepicker/daterangepicker-bs3.css?69316-170217-2032");
+			App.loadCSS("../../styles/common/font9e71.css?69316-170217-2032");
+			App.loadCSS("../../styles/web/override9e71.css?69316-170217-2032");
+			App.loadCSS("../../styles/web/mediaQuery9e71.css?69316-170217-2032");
+			App.loadCSS("../../styles/web/custom9e71.css?69316-170217-2032");
+			//App.loadCSS("/marketplace/static/styles/admin/admin.css?69316-170217-2032");
+			App.loadCSS("../../styles/web/product/variantTableStyle9e71.css?69316-170217-2032");
+			App.loadCSS("../../styles/pos/pos9e71.css?69316-170217-2032");
+			App.loadCSS("../../styles/common/add-new-customer9e71.css?69316-170217-2032");
+			App.loadCSS("../../styles/common/app9e71.css?69316-170217-2032");
+			//App.loadCSS("/marketplace/static/styles/web/inventory/inventory.css?69316-170217-2032");
+			//App.loadCSS("/marketplace/static/styles/web/inventory/inventoryDateRangePicker.css?69316-170217-2032");
+			App.loadCSS("../../styles/web/common/style9e71.css?69316-170217-2032");
+			App.loadCSS("../../styles/common/leftmenu9e71.css?69316-170217-2032");
+			App.loadCSS("../../styles/web/common/directive9e71.css?69316-170217-2032");
+			App.loadCSS("../../styles/web/common/landing-page-tabs9e71.css?69316-170217-2032");
+			App.loadCSS("../../styles/web/quick-start/quickStart9e71.css?69316-170217-2032");
+			App.loadCSS("../../styles/web/online-store/customizeOnlineStorePage9e71.css?69316-170217-2032");
+
+			App.loadCSS("../../styles/common/videoGuideModal9e71.css?69316-170217-2032");
+
+		}
+	</script>
+	<link rel="shortcut icon" href="http://www.jdomni.com/marketplace/static/images/fav_icon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../../styles/web/product/productList9e71.css?69316-170217-2032" type="text/css"/>
+	<style>
+		.loading, .editLoading{ 
+				background: none repeat scroll 0 0 #fff; height: 100%; position: fixed;  width: 100%; z-index: 999; top:0; left:0; opacity:0;}
+		
+		.rotating-loader{
+			z-index: 9999;
+			opacity:1;
+			background-color: #f1f1f1;
+		}
+		
+		.rotating-loader .icon-holder{
+			width: 65px;;
+			margin: auto;
+		}
+
+		.rotating-loader  i.icon-sleek-loader{
+			font-size: 65px;;
+			color: #ff9900;
+		}
+
+		
+		.rotating-loader .rotating {
+			-webkit-animation: rotating 2s linear infinite;
+			animation: rotating 2s linear infinite;
+		}
+		.loading .show-message{
+			color:#333333;
+			font-size:24px;
+			margin-top: 10px;
+			text-align: center;
+		}
+		.rotating-loader .initial-loader-content{
+			position:relative;
+			top:50%;
+			margin-top:-65px;
+		}
+		.loadingBar {
+			background: none repeat scroll 0 0 #eaeaea;
+			border: 1px solid #4082c4;
+			border-radius: 3px;
+			box-shadow: 0 1px 0 rgba(255, 255, 255, 0.03), 0 1px 0 rgba(0, 0, 0, 0.1) inset;
+			text-align: center;
+			height: 32px;
+		}
+		.width175px{
+			width: 175px;
+		}
+
+		.text-bold{
+			font-weight: 600;
+		}
+		.if-email{
+			padding-bottom: 40px;
+		}
+		#webklipper-publisher-widget-container-content{
+			display: none;
+		}
+
+	</style>
+	<script id="_webengage_script_tag" type="text/javascript">
+		var webengage; !function(w,e,b,n,g){function o(e,t){e[t[t.length-1]]=function(){r.__queue.push([t.join("."),arguments])}}var i,s,r=w[b],z=" ",l="init options track screen onReady".split(z),a="feedback survey notification".split(z),c="options render clear abort".split(z),p="Open Close Submit Complete View Click".split(z),u="identify login logout setAttribute".split(z);if(!r||!r.__v){for(w[b]=r={__queue:[],__v:"6.0",user:{}},i=0;i<l.length;i++)o(r,[l[i]]);for(i=0;i<a.length;i++){for(r[a[i]]={},s=0;s<c.length;s++)o(r[a[i]],[a[i],c[s]]);for(s=0;s<p.length;s++)o(r[a[i]],[a[i],"on"+p[s]])}for(i=0;i<u.length;i++)o(r.user,["user",u[i]]);setTimeout(function(){var f=e.createElement("script"),d=e.getElementById("_webengage_script_tag");f.type="text/javascript",f.async=!0,f.src=("https:"==e.location.protocol?"https://ssl.widgets.webengage.com":"http://cdn.widgets.webengage.com")+"/js/webengage-min-v-6.0.js",d.parentNode.insertBefore(f,d)})}}(window,document,"webengage");     
+		</script>
+		<script>
+		(function(){
+			xhttp = new XMLHttpRequest();
+			xhttp.open("GET.html", "/marketplace/static/json/webengage.json");
+			xhttp.send();
+			xhttp.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					var webngageId = JSON.parse(xhttp.responseText);
+					webengage.init(webngageId[location.hostname]);
+				}
+			};
+		})();
+	
+	</script>
+</head>
+<body ng-class="{'web-offline-container' : global.isPosoffline, 'has-update-message':global.dbResponse.update=='true' || global.dbResponse.dbState =='true' || global.dbResponse.issyncdelay == 'true','prevent-scroll-top':global.preventScrollingTop}">
+  <!-- Modal -->
+  <div ng-if="global.isPosoffline" class="modal fade" id="serverError" role="dialog" data-keyboard="false" data-backdrop="static" style="z-index:12000">
+    <div class="modal-dialog">    
+      <!-- Modal content-->
+      <div class="modal-content" style="width: 420px;margin:0 auto;height: 250px;">
+        <div class="modal-header">
+          <h3 class="modal-title">
+<img src="../../pos/images/icon-warning-red.png" style="width:25px;height:25px;float:left;margin-right:10px;margin-top:5px;" />POS Server Error
+</h3>
+        </div>
+        <div class="modal-body">
+          <p>We are not able to connect to POS Server. kindly check whether it is running or not. If Server is not running kindly start and retry</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="serverRetryBtn" class="btn btn-primary retryOfflineServer" style="padding:0;" >            
+            <span class="btn">Retry</span>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
+	<span class="loadingText displayNone">Loading...</span>
+	<div class="loading initial-loader rotating-loader">
+		<div class="initial-loader-content">
+			<div class="icon-holder rotating"> 
+				<i class="icon-sleek-loader"></i> 
+			</div>
+			<div class="show-message correct-message">Sit Tight! We are opening your store.</div>
+		</div>
+	</div>
+	<div id ="requestParams" reviewState = "{{reviewState}}" status="{{status}}" supplierId = "{{supplierId}}" company = "{{company}}" supplierType="{{supplierType}}" pageNumber="1" currentPage="" totalPages=""></div>
+	<input type="hidden" id="otherGroupId" />
+	<div class="successMessage none alert alert-success">
+		<div class="clearfix">
+		<i class="icon-approved pull-left"></i> 
+		<span class="pull-right">Your product has been saved.</span>
+		</div>
+	</div>
+	<!-- <div class="errorMessage none alert alert-danger">
+		<div class="clearfix">
+		<i class="icon-cross-circle pull-left"></i> 
+		<span class="pull-right" id="generalerror">Oops! Something went wrong. Please try again!</span>		
+		</div>
+	</div> -->
+	<!-- <div class="cltSideError none alert alert-danger">
+		<div class="clearfix">
+		<i class="icon-cross-circle"></i> 
+		<span class="">Sorry, but we can't continue until you fix everything that's marked in RED</span>
+		</div>
+	</div> -->
+	<div class="jd-alert-message-parent " ng-class="{'jd-transition':gMessage.animate}">
+		<div class="jd-alert-message alert" ng-class="{'jd-animate-top-alert-danger':gMessage.type === 'error','jd-transition':gMessage.animate,'jd-animate-top-alert-success':gMessage.type === 'success'}">
+			<div class="clearfix display-table" style="width:100%;">
+			<!-- ng-show="gMessage.show" -->
+			<!-- <i class="icon-cross-circle icon" ng-click="gMessage.show = false" ng-show="gMessage.type === 'error'"></i> -->
+			<i class="{{gMessage.icon}}" style="vertical-align:middle;font-size:33px;color:#fff;" ng-show="gMessage.icon"></i>
+			<div class="message-container display-table-cell " style="vertical-align:middle;font-size:15px;width:calc(100% - 30px);">{{gMessage.text}}</div>
+			<i class="icon-close-thin icon display-table-cell " style="vertical-align:middle;width:30px;" ng-click="gMessage.animate = false"></i>
+			</div>
+		</div>
+	</div>
+	<section class="vbox">
+		<div class="container padding0" style="height:100%">
+				<div class="row-fluid-15" style="height:100%">
+					<!--left menu starts-->
+					<div class="jd-left-menu-container jd-font-roboto-light" ng-controller="SellerAdmin.Controller.LeftSidebar" ng-class="{'adjust-overflow-to-accounts':showOutletFlyer}">
+					<div class="main-holder" ng-click="toggleOutlets()">
+						<div class="menu-header jd-font-roboto clearfix cursor-pointer" ng-click="toggleUserMenu($event);">
+							<div class="pull-left profile-holder" ng-hide="showUploadedLogo">
+								<div class="circle logo"><span><i class="paddingR1">{{firstStoreInitial}}</i><i>{{secondStoreInitial}}</i></span></div>
+								<!-- <img src="/marketplace/static/images/profile.svg" alt="justdial logo"> -->
+							</div>
+							<div class="pull-left profile-holder uploadedLogo" ng-show="showUploadedLogo">
+								<!-- <img src="{{storeLogoUrl}}" alt="Shop Logo"> -->
+								<div jd-load-image data-path="{{storeLogoUrl}}" data-height="30" data-width="30" ng-controller="jdLoadImageController" data-dimension="250X250" class="pull-left imageDisp marginR10" ng-model="storeLogoUrl" image-type="storeLogo">
+								</div>
+
+							</div>
+							<div class="pull-left heading">
+								<!-- <span class="store-name wrap_text">{{Manager.CurrentUser.getStoreName()}}</span> -->
+								<div class="rel-positioned">
+									<span class="icon-pagination-down abs-positioned"></span>
+									<div class="username wrap_text90 abs-positioned">{{Manager.CurrentUser.getUserName()}}</div>
+								</div>
+							</div>
+						</div>
+						<!-- <i class="icon-menu text-blue" ng-click="global.toggleLeftMenu($event)" style="color:#4082c4"></i> -->
+						<div class="user-account-holder jd-font-roboto" ng-show="showUserSetting">
+							<div class="popover user-setting-popover fade bottom in show">
+								<div class="arrow"></div>
+								<ul class="menu-list">
+									<li ng-repeat="item in userSettings" ng-hide="item.hide" ng-click="onSelectUserSetting(item)" >
+										<span class="icon {{item.iconClass}}"></span>
+										<span class="list-name">{{item.name}}</span>
+									</li>
+								</ul>
+							</div>	
+						</div>
+						<div class="store-name newstorename text-capitalize group" ng-click="(hasSingleOutAcc== false) && toggleOutlets($event)" ng-show="!isPosoffline && defaultOutAcc.hideAccountSection == false && supplierType!='B2B'">
+							<span class="wrap_text140 pull-left">{{defaultOutAcc.selectedOutletName}}</span> 
+							<a class="icon-pagination-down" ng-hide="hasSingleOutAcc"></a>
+							<span id='selected-acc' class="wrap_text140">{{defaultOutAcc.selectedAccountName}}</span>
+
+						<jd-account-selection></jd-account-selection>
+						</div>	
+						
+
+						<ul class="route-link-list jd-font-roboto" style="margin-top: 2px;">
+							<li class="group-{{item.belongsGroup}}" ng-if="item.isVisible" ng-init="handleForOfflinePos(item,$last);item.index=$index" ng-repeat="item in menuItems" ng-class="{'have-submenu':item.submenu.length > 0}">
+								<a ng-href="{{item.route}}" class="route-link" ng-class="{'active-border active':(gCurrentMenuId == item.pageid || highlightedMenuId == item.pageid) && item.pageid != 'sellerManual'}" ng-click="activateLink(item,$index);showOutletFlyer = false" tabindex="{{baseTabIndex + ( $index*10 ) }}" jd-set-target="{{item.target}}" ng-keydown="setFocusToFirstElement($event,$last)" id="jdLeftMenu{{item.pageid}}">
+									<i class="link-icon {{item.iconClass}}"></i>
+									<span class="link-name m-R5">
+										{{item.name}}
+									</span>
+									<i class="icon-pagination-right" ng-if="item.submenu" ng-show="highlightedMenuId !== item.pageid">
+									</i>
+									<i class="icon-pagination-down" ng-if="item.submenu" ng-show="highlightedMenuId == item.pageid">
+									</i>
+									<jd-notification-count ng-if="item.attributes" red-dot-attrs="item.attributes" one-time="{{item.attrOneTime}}"></jd-notification-count>
+								</a>
+								<ul class="route-link-sub-list" ng-if="item.submenu" ng-class="{'open':highlightedMenuId == item.pageid,'closed':highlightedMenuId !== item.pageid}">
+									<li ng-repeat="subitem in item.submenu" ng-click="activateLink(subitem)" ng-show="subitem.isVisible && !(subitem.name === 'c_discounts' && supplierType === 'B2B')" ng-init="showHideSubmenuItem(subitem,item,$last)">
+										<a ng-href="{{subitem.route}}" class="route-link" ng-class="{'active':gCurrentChildId == subitem.pageid}" id="jdLeftMenu{{subitem.pageid}}" jd-set-target="{{subitem.target}}" tabindex="{{baseTabIndex + (item.index*10 )+ $index }}" ng-click="showOutletFlyer = false">
+											<span class="link-name">
+												{{subitem.name}}
+											</span>
+											<jd-notification-count ng-if="subitem.attributes" red-dot-attrs="subitem.attributes"></jd-notification-count>
+										</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+						<div class="main-footer">
+							Powered by <img src="http://www.jdomni.com/marketplace/static/images/jd-omni.svg" alt="justdial logo">
+						</div>
+
+					</div>
+					<!--left menu ends-->
+					<!--body right starts-->
+    <div ng-show="global.dbResponse.dbState =='true' || global.dbResponse.update=='true' || global.dbResponse.issyncdelay == 'true'" class="header-update-message-holder">
+        <div ng-show="global.dbResponse.update!='true' && global.dbResponse.dbState=='true'">
+            Application update failed, you can still continue using the application. For installing latest update Contact Customer Support.
+        </div>
+        <div ng-show="global.dbResponse.update=='true'">
+            An update is available and will be applied as soon as you relaunch JD Omni Server
+        </div>
+        <div ng-show="global.dbResponse.update!='true' && global.dbResponse.dbState!='true' && global.dbResponse.issyncdelay == 'true'">
+            <span class="icon-sync offline-sync"></span> Offline sync with online system is on hold due to new system upgrade. Please restart system, if sync doesn't start in <span>{{global.dbResponse.syncdelay?global.dbResponse.syncdelay:"24 hrs"}}</span>.
+        </div>
+    </div>                                        
+					<div class="span12 routes-content-holder {{routeClass}}" ng-class="{'theme2':themeType == 'theme2'}" id="content" style="height:100%;" ng-click="global.hideLeftMenu()">
+					<div ng-view style="height:100%" class="clearfix"></div>
+					<!--body right ends-->
+					</div>
+				</div>
+			</div>
+			
+	   <!--  <div class="text-right jd-help-section" ng-show="currentRouteData.manualUrl"><a target= '_blank' href= "http://manual.jdomni.com{{currentRouteData.manualUrl}}" class="help-img"><div class='jd-sprite jd-help-imgs'></div></a></div> -->
+		<!-- </section> -->
+<!--		<footer ng-show="gCurrentPageId !== 'pos'" ng-class="{'padding0':hideLeftMenu}">-->
+			<a href="%7b%7bglobal.html" target="_blank" ng-show="!global.isPosoffline" class="team-viewer-link">
+				<div class="pull-right btn connect-btn-style hide" ng-click="global.setTeamViewerFlagFalse()" ng-class="{show:global.showConnectBtn && global.showAnimation,'btn-pos-style':currentRouteData.routeId == 'pos','animation':global.showAnimation}">
+					<div class="clearfix">
+						<div><i class="icon-connect pull-left"></i></div>Connect Support 
+					</div>
+				</div>
+			</a>
+		<footer ng-hide='hideFooter' ng-class="{'padding0':hideLeftMenu}" class='main-footer'>
+            <div>Copyright 2016-2017@ {{host}} All Rights Reserved. <a href="http://www.justdial.com/Privacy-Policy" target="_blank">Privacy</a> | <a href="http://www.justdial.com/Terms-of-Use" target="_blank">Terms</a>	
+            	<!---- PRODUCT COPY POPOVER ---->
+            	<span ng-show="currentRouteData.showProductCopyIcon == true && isDemo">
+            		<jd-custom-progress-popover options='prodCopyProgressOption'></jd-custom-progress-popover>
+            	</span>
+            	<!---- PRODUCT COPY POPOVER ---->
+            	
+            	<!----FOOTER ICONS -->
+            	<div class="footer-icon-holder pull-right">
+            		<div class="product-copy-section pull-left" ng-show="currentRouteData.showProductCopyIcon && showProductCopyIcon && isDemo" ng-click="showHideProductCopyPopover(true , true)">
+                        <span class="icon-box txt-Blue product-copy-icon"></span>
+                        <span class="icon-bullet-filled product-copy-bullet-icon"></span>
+                    </div>
+                    <div class="broadcast-msg-section pull-left" ng-click="broadcastMsgOptions.openBroadcastMsgModal()" ng-show="currentRouteData.showMsgIcon">
+	                    <span class="broadcast-msg icon-message_2"></span>
+	                        <span class="badge badge-red" ng-show="broadcastMsgOptions.count">
+	                            <span class="count">{{broadcastMsgOptions.count}}</span>
+	                        </span>
+	                    </span>
+	                </div>
+            	</div>
+            	<!--FOOTER ICONS -->
+            </div>
+		</footer>
+                <footer ng-show="global.serverSyncCheck.posServerExpiryStatus=='UNSYNC_THRESHOLD_REACHED'" style="color:#FE6005;position: fixed;bottom: 0;">
+                    <i class="icon-sync jd-color-inherit" style="position: relative;top: 4px;"></i> Server Sync Required <span class="txt-Blue jd-text-underline cursor-pointer" ng-click="global.showServerSyncModal()">Details</span>
+                </footer>
+	</section>
+	
+				<!-- web/index.htm*************Change Password Modal******************  -->
+
+						<div class="modal fade jd-font-roboto" id="changeStaffPasswordModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="true" aria-labelledby="myModalLabel">
+						<div class="modal-dialog" style="width:380px; top: 30px;">
+					        <div class="modal-content">
+					            <div class="modal-header" style="top: 0px">
+					                <button type="button" class="close" style="margin-top: 0px" ng-mousedown="changeStaffPass.passwordChanged(false)" data-dismiss="modal"><i class="icon-cross"></i></button>
+					                <h4 class="modal-title"> Change Password </h4>
+					            </div>
+					            <div ng-class="{'jd-modal-danger-alert' : changeStaffPass.equalPass || changeStaffPass.wrongCurrentPassword}" style="padding-left: 20px;border : none ;font-size: inherit;">
+					            	<div ng-show="changeStaffPass.equalPass">
+					            		<span class="icon-warning jd-font-inherit jd-color-inherit"></span>
+			                			<span style="margin-left:10px">Passwords do not match</span>
+					            	</div>
+			                		<div ng-show="changeStaffPass.wrongCurrentPassword">
+			                			<span class="icon-warning jd-font-inherit jd-color-inherit"></span>
+										<span style="margin-left:10px">Current password is incorrect</span>
+			                		</div>
+					            </div>
+					            <div class="modal-body" style="padding-bottom: 0px;">
+					                <div class="form-container" ng-keydown="$event.keyCode == 13 && changeStaffPass.existData() ? changeStaffPass.passwordChanged(true):''">	
+					                	<div ng-class="{'jd-validation-error' : changeStaffPass.errorCurrentPassword || changeStaffPass.wrongCurrentPassword}" style="margin-bottom:20px;">
+						                    <label class="control-label">Current Password</label>
+						                    <div>
+						                    	<input type="text" ng-hide="true">
+						                    	<input type="password" name="currentPassword" ng-model="changeStaffPass.currentPassword" class="form-control"  jd-set-focus="changeStaffPass.setFocusToPassword" placeholder="Enter current password">
+						                    </div>
+						                    <span ng-show="changeStaffPass.errorCurrentPassword"><label class="jd-error-msg">Enter current password</label></span>
+					                    </div>
+					                    <div ng-class="{'jd-validation-error' : changeStaffPass.errorNewPassword || changeStaffPass.equalPass || changeStaffPass.errorNewPasswordLen}" style="margin-bottom:20px;">
+					                        <label class="control-label">New Password</label>
+					                        <div>
+					                        	<input jd-disable-events type="password" name="newPassword" ng-model="changeStaffPass.newPassword" class="form-control" placeholder="Enter new password" maxlength="50">
+					                        </div>
+					                        <span ng-show="changeStaffPass.errorNewPassword"><label class="jd-error-msg">Enter new password</label></span>
+					                        <span ng-show="changeStaffPass.errorNewPasswordLen"><label class="jd-error-msg">Password should be of minimum 6 characters</label></span>
+					                    </div>
+					                    <div ng-class="{'jd-validation-error' : changeStaffPass.equalPass || changeStaffPass.reEnterPass}" style="margin-bottom:20px;">
+					                        <label class="control-label">Re-enter New Password</label>
+					                        <div>
+					                        	<input jd-disable-events type="password" name="matchPassword" ng-model="changeStaffPass.confirmPassword" class="form-control"  placeholder="Re-enter new password" maxlength="50">
+					                        </div>
+					                        <span ng-show="changeStaffPass.reEnterPass"><label class="jd-error-msg">Re-enter new password</label></span>
+					                    </div>
+					                </div>
+					            </div>
+					            <div class="modal-footer">
+					                <button type="button" class="btn btn-default" ng-mousedown="changeStaffPass.passwordChanged(false)" data-dismiss="modal">Cancel</button>
+					                <button type="button" class="btn btn-primary" ng-click="changeStaffPass.passwordChanged(true)" ng-disabled="!changeStaffPass.existData()">Save Password</button>
+					            </div>
+					        </div>
+						</div>
+						</div>	
+				<!-- **********************END Change Password Modal********************* -->		
+<input type="hidden" value="{productName=1, productKeyword1=2, productKeyword2 = 3, productKeyword3 = 4, productCategory=5, productImage=6,  productDetailedDescription=7, productAttribute=8, productMinOrderQty=9, productMinOrderQtyUnit =10, productFobPriceCur=11, productFobPriceMin=12, productFobPriceMax=13, productFobPricePer=14, priceProdUnit=15, productProdCap = 16, productProdUnits =17, productProdDay =18, productDeliveryTime=19, productPackagingDetail=20, productGroup=21}" id="completionWeghtage">
+	
+	
+	
+	<!--<input type="hidden" value="{productName=7.15, productKeyword1=2.3833, productKeyword2 = 2.3833, productKeyword3 = 2.3833, productImage=7.15, productBriefDescription=7.15, productDetailedDescription=7.15, productAttribute=7.15, productMinOrderQty=3.575, productMinOrderQtyUnit =12.575, productFobPriceCur=2, productFobPriceMin=2, productFobPriceMax=2, productFobPricePer=2, priceProdUnit=7.15, productProdCap = 2, productProdUnits =2, productProdDay =12, productDeliveryTime=7.15, productPackagingDetail=7.15, productGroup=7.15, productCategory=7.15}" id="completionWeghtage">-->
+	<script data-main="/marketplace/static/scripts/manager.js?69316-170217-2032" src="../../scripts/libs/require/require9e71.js?69316-170217-2032"></script>
+	<!--<script type="text/javascript" src="/marketplace/static/scripts/common/productManager.js?69316-170217-2032"></script>
+	<script type="text/javascript" src="/marketplace/static/scripts/common/utills.js?69316-170217-2032"></script>
+	<script src="<c:url value="/scripts/pm/js/jquery.min.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/scripts/pm/js/angular.min.js"/>"></script>
+	<script src="<c:url value="/scripts/pm/js/angular-route.min.js"/>"></script>-->
+	<!-- Bootstrap -->
+	<!--<script src="<c:url value="/scripts/pm/js/bootstrap.js?69316-170217-2032"/>"></script>-->
+	<!-- App -->
+	<!-- <script type="text/javascript" src="<c:url value="/scripts/common/modernizr.custom.03148.js"/>"></script>  
+	<script type="text/javascript" src="<c:url value="/scripts/pm/js/app.js"/>"></script>  
+	<script type="text/javascript" src="<c:url value="/scripts/pm/js/slimscroll/jquery.slimscroll.min.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/scripts/pm/js/datatables/jquery.dataTables.min.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/scripts/pm/js/datatables/jquery.csv-0.71.min.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/scripts/pm/js/charts/easypiechart/jquery.easy-pie-chart.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/scripts/pm/js/datatables/demo.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/scripts/pm/js/app.plugin.js"/>"></script> 
+	<script type="text/javascript" src="<c:url value="/scripts/pm/js/dragdrop/jquery.dragsort-0.5.2.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/scripts/pm/js/jquery.validate.min.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/scripts/pm/js/jquery.alphanumeric.pack.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/scripts/pm/js/jquery-ui-autocomplete-1.10.4.custom.min.js"/>"></script>-->
+	<!--for categories keywords-->
+	<!-- <script type="text/javascript" src="<c:url value="/scripts/pm/js/selectize/selectize.min.js"/>"></script> -->
+	<!--for custom select box-->
+<!--	<script type="text/javascript" src="<c:url value="/scripts/pm/js/fancyselect/fancySelect.js?69316-170217-2032"/>"></script>
+
+	
+	<script type="text/javascript" src="<c:url value="/scripts/pm/js/ckeditor/tinymce.min.js"/>"></script>
+	
+	<script src="<c:url value="/scripts/pm/js/stickyfloat/stickyfloat.js?69316-170217-2032"/>"></script>
+	<script src="<c:url value="/scripts/pm/js/stickyfloat/progress-circle.js?69316-170217-2032"/>"></script>
+	
+	<script type="text/javascript" src="<c:url value="/scripts/pm/js/pageScripts/custom.js"/>"></script>
+	<script type="text/javascript" src="<c:url value="/scripts/pm/js/pageScripts/modalWindow.js?69316-170217-2032"/>"></script>
+	<script type="text/javascript" src="<c:url value="/scripts/pm/js/pageScripts/bootstrap-tokenfield.js?69316-170217-2032"/>"></script>
+	<script type="text/javascript" src="<c:url value="/scripts/pm/js/pageScripts/manageProducts.js?69316-170217-2032"/>"></script>
+	<script type="text/javascript" src="<c:url value="/scripts/pm/js/pageScripts/addProduct.js?69316-170217-2032"/>"></script>
+	<script type="text/javascript" src="<c:url value="/scripts/pm/js/pageScripts/imageUploader.js?69316-170217-2032"/>"></script>
+	<script type="text/javascript" src="<c:url value="/scripts/pm/js/pageScripts/variantController.js?69316-170217-2032"/>"></script>
+	<script type="text/javascript" src="<c:url value="/scripts/jquery.form.js"/>"></script>
+	 <script type="text/javascript" src="/marketplace/scripts/pm/js/pageScripts/ui-touch-punch.js"></script> -->
+	 
+	 <script type="text/ng-template" id="uomPerPiece.htm">
+<div id="{{jdUOMHolderId}}" ng-controller="SellerAdmin.Common.Controller.UOMDropdown" ng-init="init('productLevelInventoryData')" class="unit-autosuggest jd-inline-block" ng-class="{'jd-open':showDropDown}" style="margin-top:0px;">
+	<div class="selectBox" ng-keydown="handleArrowKeyDown($event)" ng-keyup="handleArrowKeyUp($event)">
+		<input type="text" jd-set-focus="focusUnitBox" ng-model="uomPerPiece" class="unit-dropdown form-control jd-inline-block" ng-change="updateSearchResults()" ng-blur="autoSelectUnit()" placeholder="{{showDropDown?'':'Select or type unit'}}" ng-focus="showDropDown = true;focusUnitBox = true;" ng-disabled="isUnitSelected || productSelected" style="width:160px;" maxlength="20"/>
+		<span class="arrow-button-holder" ng-click="setFocusTOUnit()">
+			<i ng-show="!isUnitSelected" class="icon-arrow-down font14 text-black custom-dropdown-arrow-margin custom-arrow-button-holder"></i>
+			<i ng-show="isUnitSelected" class="icon-cross icon jd-color-inherit custom-dropdown-arrow-margin custom-cross-button-holder" ng-click="clearSearchResults()"></i>
+		</span>
+	</div>
+	<ul class="jd-dropdown-menu custom-jd-drop-down-menu" ng-show="uomPerPiece.length == 0 && focusUnitBox == true">
+		<li ng-show="popularUOM.length > 0" class="jd-dropdown-label">Popular Units</li>
+		<li ng-repeat="item in popularUOM" class="jd-hover" ng-mousedown="jdSelectUnit(item)">
+			{{item.displayVal}}
+		</li>
+		<li ng-show="otherUOM.length > 0" class="jd-dropdown-label">Other Units</li>
+		<li ng-repeat="item in otherUOM" class="jd-hover" ng-mousedown="jdSelectUnit(item)">
+			{{item.displayVal}}
+		</li>
+	</ul>
+	<ul class="jd-dropdown-menu " ng-show="uomPerPiece.length > 0 && unitPerContentList.length > 0 && focusUnitBox == true">
+		<li class="jd-dropdown-label">Search Results</li>
+		<li ng-repeat="item in unitPerContentList" class="jd-hover" ng-mousedown="jdSelectUnit(item)">
+			{{item.displayVal}}
+		</li>
+	</ul>
+</div>
+</script>
+<div  class="modal hide fade printable"  id="printPreview" tabindex="-1" role="dialog" aria-labelledby="imageUploadModal" style="padding-top: 0px;" data-keyboard = "true" data-backdrop = "static">
+	    <div class="modal-dialog"  ng-class="{'pos-challan-modal-width-895':global.fullWidth}">
+	        <div class="modal-content">
+	            <div class="modal-header">
+	                <button type="button" tabindex = "15000" class="close" ng-click="global.closePrintPreviewModal()" jd-set-focus = "focusOnTop" set-false = "true" data-dismiss="modal"><span aria-hidden="true"><i class="icon-cross" style="color:inherit;"></i></span></button>
+	                <h3 class="modal-title font-thin"><span ng-show="!global.isBarcode && !global.isChallan">Invoice</span><span ng-show="!global.isBarcode && global.isChallan">Challan</span><span ng-show="global.isBarcode">Barcode</span> Preview</h3>
+
+	            </div>
+	            <div class="modal-body" style="text-align: center;overflow:auto;width:auto;max-height: 67vh;outline:none;" tabindex = "15001">
+                        <div style="width:550px;margin:auto;" ng-class="{'jd-full-width':global.fullWidth}">
+	                	<iframe frameborder="0" id="showReceipt">
+	                	</iframe>
+                	</div>
+	            </div>
+	            <div class="modal-footer">
+	                <button class="btn btn-default" data-dismiss="modal" ng-click="global.closePrintPreviewModal()" style="height: 38px;" tabindex = "15002">
+	                    Cancel
+	                </button>
+	                <button class="btn btn-primary" ng-click="global.printRecipt()" ng-show="!global.isBarcode && !global.isChallan" tabindex = "15003" ng-blur = "focusOnTop = true">
+	                    <i class="icon-printer icon-printer-mod"></i> Print Invoice
+	                </button>
+					<button class="btn btn-primary" ng-click="global.printChallan()" ng-show="!global.isBarcode && global.isChallan" tabindex = "15003" ng-blur = "focusOnTop = true">
+	                    <i class="icon-printer icon-printer-mod"></i> Print Challan
+	                </button>
+	                <button class="btn btn-primary" ng-click="global.printBarcode()" ng-show="global.isBarcode" tabindex = "15003" ng-blur = "focusOnTop = true">
+	                    <i class="icon-printer icon-printer-mod"></i> Print Barcode
+	                </button>
+	            </div>
+
+	        </div>
+	    </div>
+	</div>
+	<div>
+		<div id="domainModal" class="modal fade" role="dialog" tabindex="-1" data-keyboard = "true" data-backdrop = "static">
+  			<div class="modal-dialog">
+    			<div class="modal-content">
+      				<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal">&times;</button>
+        				<jd-help entity-url='{{domainHelpURL}}'></jd-help>
+        				<h3 class="modal-title font-thin">Domain Name Not Registered</h3>
+      				</div>
+      				<div class="modal-body" ng-class="{'if-email':emailFlag}">
+        				<div class="text-bold">Oops! You have not registered your domain name click below to add now.</div>
+        				<div class="paddingT30">
+        					<button type="button" class="btn btn-primary" style="font-size:18px;padding:15px;" ng-click="redirectToDomainLanding()"><i class="icon-web"></i> Add Domain Name</button>
+        				</div>
+      				</div>
+      				<div class="modal-footer" ng-hide="emailFlag">
+      					<div class="pull-right cursor-pointer txt-Blue" ng-click="toOnlineStoreLandingPage()">Skip</div>
+      					<!-- <a href={{global.domainURL}} class="pull-right" target="_blank" ng-click="closeModal()">Skip</a> -->
+      				</div>
+    			</div>
+    		</div>
+		</div>
+	</div>
+
+	<!-- EMAIL FLOW RELATED MODALS -->
+	<div ng-controller="SellerAdmin.Controller.emailCtrl">
+	<!-- <script type="text/ng-template" id="selectBEmailSysModal.htm"> -->
+		<link rel="stylesheet" href="../../styles/web/email/emailPage9e71.css?69316-170217-2032" type="text/css"/>
+		<div class="modal fade jd-font-roboto selectBEmailSysModal" id="selectBEmailSysModal" role="dialog" data-keyboard="true" data-backdrop="static" tabindex="-1">
+			<div class="modal-vertical-alignment-helper">
+				<div class="modal-dialog modal-vertical-align-center">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button class="close" data-dismiss="modal" ng-blur="setFocusToBtn=true;" tabindex="20002">
+								<i class="icon-close-thin jd-color-inherit font24"></i>
+							</button>
+							<jd-help entity-url='?p=11648/#BE'></jd-help>
+							<h3 class="modal-title font-thin txt-left jd-color-inherit" jd-lang="c_selecBEmailsys" ng-click="startStopAnimation = !startStopAnimation"></h3>
+						</div>
+						<div class="modal-body">
+							<div class="email-sys-body border-right">
+								<div class="img-container"><img class="img" src="http://www.jdomni.com/marketplace/static/images/g_suite.svg"></div>
+								<div class="desc-container">
+									<div class="description">Business email address</div>
+									<div class="description">30GB of online storage for file syncing and sharing</div>
+									<div class="description">Security and admin controls</div>
+									<div class="description">24 / 7 phone and email support</div>
+									<div class="description">Video and voice calls</div>
+									<div class="description">Online text documents, spreadsheets and slides</div>
+								</div>
+								<div class="rate-container">
+									<div class="ppmlbl jd-font-roboto-medium">Price Per Month</div>
+									<div class="ppm font20 jd-font-roboto-medium"><i class="icon-rs jd-color-inherit font16"></i> {{emailRateGoogle}} <span class="perU font13">per user</span></div>
+									<div class="btn-container">
+										<button type="button" class="btn btn-coming-soon" tabindex="20000" disabled>Coming Soon</button>
+									</div>
+								</div>
+							</div>
+							<div class="email-sys-body">
+								<div class="img-container"><img class="img" src="http://www.jdomni.com/marketplace/static/images/direct_i-02.svg"></div>
+								<div class="desc-container">
+									<div class="description">Business email address</div>
+									<div class="description">5GB of storage</div>
+									<div class="description">Security and admin controls</div>
+									<div class="description">24 / 7 phone and email support</div>
+								</div>
+								<div class="rate-container">
+									<div class="ppmlbl jd-font-roboto-medium">Price Per Month</div>
+									<div class="ppm font20 jd-font-roboto-medium"><i class="icon-rs jd-color-inherit font16"></i> {{emailRateDirecti}} <span class="perU font13">per user</span></div>
+									<div class="btn-container">
+										<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#bookEmailModal" tabindex="20001" ng-click="getDomainInfo()" jd-set-focus="setFocusToBtn" set-false="true">Proceed</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> 
+	<!-- </script>
+	<script type="text/ng-template" id="bookEmailModal.htm"> -->
+		<div class="modal fade jd-font-roboto bookEmailModal" id="bookEmailModal" role="dialog" data-keyboard="true" data-backdrop="static" tabindex="-1">
+			<div class="modal-vertical-alignment-helper">
+				<div class="modal-dialog modal-vertical-align-center">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button class="close" ng-blur="setFocusToDropDown=true;" tabindex="20004" data-dismiss="modal" ng-click="refreshValues()">
+								<i class="icon-close-thin jd-color-inherit font24"></i>
+							</button>
+							<h3 class="modal-title font-thin txt-left jd-color-inherit" jd-lang="c_bookEmailAcc" ng-click="startStopAnimation = !startStopAnimation"></h3>
+						</div>
+						<div class="modal-body">
+							<div class="perU font14 domain-label">Select number of Email Accounts for domain {{domainName}}</div>
+							<div class="input-num-of-email">
+								<div class="inputBox" ng-show="noOfEmailAcc10plus">
+									<input type="number" jd-web-weight allow-decimal="false" int-range=4 jd-set-focus="noOfEmailAcc10plus && setFocusToDropDown" tabindex="20001" ng-model="noOfEmailAccInp" class="email-input-number jd-inline-block" ng-change="updateTotalCost()" ng-focus="invalidRequired=false" ng-blur="checkInput()" required />
+									</span>
+								</div>
+								<jd-drop-down ng-show="!noOfEmailAcc10plus" ng-model="noOfEmailAcc" jd-update="selectNum()" option-list="noeOptions" select-on-enter="true" set-focus="setFocusToDropDown" tabindex="20000"></jd-drop-down>
+								<div ng-show="invalidRequired" class="jd-validation-error">Required field</div>
+							</div>
+							<div class="perU font14 width160">
+								<div>Cost per User</div>
+								<div class="ppm font20 jd-font-roboto-medium"><i class="icon-rs jd-color-inherit font16"></i> {{rate}} <span class="font14 pyr">per year</span></div>
+							</div>
+							<div class="perU font14">
+								<div>Total Cost per year</div>
+								<div class="ppm font20 jd-font-roboto-medium" ng-hide="totalCostPyNull"><i class="icon-rs jd-color-inherit font16"></i> {{totalCostPy}} </div>
+								<div class="ppm jd-font-roboto-medium" ng-show="totalCostPyNull">- -</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="btn" class="btn btn-primary" ng-click = "makePayment()" tabindex="20002">Purchase Email</button>
+							<button class="btn btn-default pull-left" data-dismiss="modal" tabindex="20003" data-toggle="modal" data-target="#selectBEmailSysModal" ng-click="refreshValues()">Back</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> 
+	<!-- </script>
+
+	<!-- EMAIL FLOW RELATED MODALS END 
+
+	<div ng-controller="SellerAdmin.Controller.emailCtrl">
+		<div ng-include src="'selectBEmailSysModal.htm'"></div>
+		<div ng-include src="'bookEmailModal.htm'"></div> -->
+	</div>
+
+	<jd-broadcast-messages options="broadcastMsgOptions"></jd-broadcast-messages>
+	<div ng-include="'/marketplace/static/templates/common/directive-template.htm'"></div>
+	<div ng-include="'/marketplace/static/templates/web/common/serverSyncModal.htm'"></div>
+	<jd-pay-bills options="global.payBillsOption"></jd-pay-bills>
+	<div ng-include="'/marketplace/static/templates/web/common/selectLangModal.htm'"></div>
+	<jd-upload-files options="dfdf"></jd-upload-files>
+
+</body>
+
+<!-- Mirrored from www.jdomni.com/marketplace/static/templates/web/index.htm by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 20 Feb 2017 06:01:49 GMT -->
+</html>
