@@ -12,12 +12,17 @@ namespace TaskManager.tm_admin
     public partial class Dashboard : System.Web.UI.Page
     {
         GetData D = new GetData();
+        public string LoginType = "Employee";
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Request.Cookies["ADMIN_NAME"].Value == "Admin")
+            {
+                LoginType = "Admin";
+            }
+                if (!IsPostBack)
             {
                 BindData();
-                if (Request.Cookies["ADMIN_NAME"].Value == "admin")
+                if (Request.Cookies["ADMIN_NAME"].Value == "Admin")
                 {
                     divActiveLead.Visible = false;
                 }

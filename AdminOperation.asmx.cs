@@ -9,6 +9,7 @@ using System.Web.Script.Serialization;
 using System.Web.Services;
 using System.Web.UI.WebControls;
 using TaskManager.Models;
+using System.Runtime.Caching;
 
 namespace TaskManager
 {
@@ -1164,7 +1165,7 @@ namespace TaskManager
 
                     //get the all task
                     DataTable dt = D.GetDataTable("select convert(VARCHAR,tm.due_date,106) as DUEDATE,convert(VARCHAR,tm.due_date,105), '' as TASK_OWNER_NAME, tm.*,em.first_name+' '+em.last_name as ASSIGNED_EMPLOYEE_NAME from " +
-                                                    "TASK_MASTER as tm ,employee_master as em where " +
+                                                    "  as tm ,employee_master as em where " +
                                                     "em.ID=tm.ASSIGN_TO and tm.TASK_OWNER!=tm.ASSIGN_TO " + where + " order by tm.DUE_DATE asc");
 
                     if (dt.Rows.Count > 0)
@@ -1478,6 +1479,29 @@ namespace TaskManager
             }
         }
 
+        //cache memory  
+        public class MemoryCacher
+        {
+            public object GetValue(string key)
+            {
+                MemoryCache memoryCache = MemoryCache.Default;
+                return memoryCache.Get(key);
+            }
 
+            public bool Add(string key, object value, DateTimeOffset absExpiration)
+            {
+                MemoryCache memoryCache = MemoryCache.Default;
+                return memoryCache.Add(key, value, absExpiration);
+            }
+
+            public void Delete(string key)
+            {
+                MemoryCache memoryCache = MemoryCache.Default;
+                if (memoryCache.Contains(key))
+                {
+                    memoryCache.Remove(key);
+                }
+            }
+        }
     }
 }

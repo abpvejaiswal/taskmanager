@@ -1,68 +1,66 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/tm-admin/AdminMaster.Master" AutoEventWireup="true" CodeBehind="AllTask.aspx.cs" Inherits="TaskManager.tm_admin.AllTask" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-        <script>
-
-            $(document).ready(function () {
-
-                $("#spanalldeleted").hide();
-                $("#filterbydate").hide();
-          
-            });
+    <script>
+        $(document).ready(function () {
+            $("#spanalldeleted").hide();
+            $("#filterbydate").hide();
+        });
 
 
-            function CheckAll(check) {                
-                if (check.checked) {
-                    $('.checkbox_grid').each(function () {
-                        this.checked = true;
-                    });
-                    $("#spanalldeleted").show();
-                }
-                else {
-                    $('.checkbox_grid').each(function () {
-                        this.checked = false;
-                    });
-                    $("#spanalldeleted").hide();
-                }                
-            }
-
-
-            $('.checkall').bind("click", function () {
-                alert();
-                debugger;
-                //if (this.checked) {
-                //    $('.checkbox_grid').each(function () {
-                //        this.checked = true;
-                //    });
-                //    $("#spanalldeleted").show();
-                //}
-                //else {
-                //    $('.checkbox_grid').each(function () {
-                //        this.checked = false;
-                //    });
-                //    $("#spanalldeleted").hide();
-                //}
-            });
-            function IsCheckedOrNot(check) {
-                //alert(check.checked);
-                //if (check.checked == true)
-                //    $("#spanalldeleted").show();
-                //else
-                //    $("#spanalldeleted").hide();
-
-                var i = 0;
+        function CheckAll(check) {
+            if (check.checked) {
                 $('.checkbox_grid').each(function () {
-                    //alert(this.checked);
-                    if (this.checked == true) {
-                        i++;
-                    }
+                    this.checked = true;
                 });
-
-                if (i >= 1)
-                    $("#spanalldeleted").show();
-                else
-                    $("#spanalldeleted").hide();
+                $("#spanalldeleted").show();
+            }FilterTask
+            else {
+                $('.checkbox_grid').each(function () {
+                    this.checked = false;
+                });
+                $("#spanalldeleted").hide();
             }
-        </script>
+        }
+
+
+        $('.checkall').bind("click", function () {
+            alert();
+            debugger;
+            //if (this.checked) {
+            //    $('.checkbox_grid').each(function () {
+            //        this.checked = true;
+            //    });
+            //    $("#spanalldeleted").show();
+            //}
+            //else {
+            //    $('.checkbox_grid').each(function () {
+            //        this.checked = false;
+            //    });
+            //    $("#spanalldeleted").hide();
+            //}
+        });
+        function IsCheckedOrNot(check) {
+            //alert(check.checked);
+            //if (check.checked == true)
+            //    $("#spanalldeleted").show();
+            //else
+            //    $("#spanalldeleted").hide();
+
+            var i = 0;
+            $('.checkbox_grid').each(function () {
+                //alert(this.checked);
+                if (this.checked == true) {
+                    i++;
+                }
+            });
+
+            if (i >= 1)
+                $("#spanalldeleted").show();
+            else
+                $("#spanalldeleted").hide();
+        }
+    </script>
     <script>
         function FilterDropdownChange(filter) {
             var selectedValue = filter.value;
@@ -82,6 +80,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <section id="content" ng-app="ToDoListApp" ng-controller="ToDoListController">
+
         <div class="container">
             <%--<div class="block-header">
                 <h2>ALL LEAD</h2>
@@ -102,15 +101,15 @@
                                     <tr>
                                         <td>Due Date</td>
                                         <td><span ng-bind="TASK_DETAIL.DUE_DATE"></span></td>
-                                    </tr>                                    
+                                    </tr>
                                     <tr>
                                         <td>Actual Date of Work finish</td>
-                                        <td><span ng-bind="TASK_DETAIL.ACTUAL_WORK_FINISH_DATE"></span></td>                                        
-                                    </tr>                                                                        
+                                        <td><span ng-bind="TASK_DETAIL.ACTUAL_WORK_FINISH_DATE"></span></td>
+                                    </tr>
                                     <tr>
                                         <td>Actual Days taken</td>
                                         <td><span ng-bind="TASK_DETAIL.ACTUAL_DAYS_TAKEN"></span></td>
-                                    </tr>      
+                                    </tr>
                                     <tr>
                                         <td>Repeat type</td>
                                         <td><span ng-bind="TASK_DETAIL.REPEAT_TYPE"></span></td>
@@ -175,7 +174,7 @@
                                 <i class="zmdi zmdi-close-circle-o">Close Task</i>
                             </button>--%>
 
-                            <button type="button" style="display:none;" ng-if="TASK_DETAIL.IS_CLOSED!='1'" title="View Task" ng-click="UpdateTask(TASK_DETAIL)"
+                            <button type="button" style="display: none;" ng-if="TASK_DETAIL.IS_CLOSED!='1'" title="View Task" ng-click="UpdateTask(TASK_DETAIL)"
                                 class="btn btn-primary waves-effect waves-float">
                                 Update Task
                             </button>
@@ -210,7 +209,7 @@
                     <div class="row">
                         <div class="col-sm-2">
                             <%--onchange="FilterDropdownChange(this)" --%>
-                            <select class="form-control" ng-change="FilterDropdownChangeAllTask()" ng-model="FilterOption">
+                            <select class="form-control" ng-change="FilterDropdownChangeAllTask()" ng-model="FilterOption" id="FilterTask">
                                 <option value="todays+overdue">Todays + Overdue Task</option>
                                 <option value="myopentask">Open Task</option>
                                 <option value="next7daystask">Next 7 days Task</option>
@@ -224,7 +223,10 @@
                                 <option value="In Progress">In Progress Task</option>
                                 <option value="Not Started">Not Started Task</option>
                                 <option value="yesterdaycomletetask">Yesterday Completed Task</option>
+                                <option value="waiting4input">Waiting for input</option>
+
                             </select>
+
                         </div>
                         <div id="filterbydate">
                             <div class="col-sm-2">
@@ -245,7 +247,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <%--<ul class="tab-nav" role="tablist">
                     <li class="active"><a href="#opentask" aria-controls="opentask" role="tab" data-toggle="tab">Open Task</a></li>
@@ -275,14 +276,14 @@
                                         </div>
                                     </th>
 
-                                    
+
                                     <th>Assign to</th>
                                     <th>Client Name</th>
                                     <th>Contact Person</th>
                                     <th>Client Number</th>
                                     <th>Email ID</th>
                                     <th>Client Group</th>
-                                    <th>Nature Of Work</th>                                    
+                                    <th>Nature Of Work</th>
                                     <th>Work Recieved On    </th>
                                     <th>Due Date</th>
                                     <th>Closed Date</th>
@@ -298,9 +299,9 @@
                                     <th>Description</th>
                                     <th>Priority</th>                   
                                     <th>Repeat Type</th>--%>
-                                    <th>Task Owner</th>                                   
-                                    
-                                     <th>Action</th>
+                                    <th>Task Owner</th>
+
+                                    <th>Action</th>
                                 </tr>
                             </thead>
 
@@ -317,22 +318,22 @@
                                         </div>
 
                                     </td>
-                                    
+
                                     <td ng-bind="x.ASSIGNED_EMPLOYEE_NAME"></td>
-                                                                        
+
                                     <td ng-bind="x.SUBJECT"></td>
                                     <td ng-bind="x.CONTACT_PERSON"></td>
-                                    <td ng-bind="x.CONTACT_NUMBER"></td>                        
+                                    <td ng-bind="x.CONTACT_NUMBER"></td>
                                     <td ng-bind="x.CONTACT_EMAIL_ID"></td>
-                                    <td ng-bind="x.CLIENT_GROUP"></td>                                    
-                                    <td ng-bind="x.NATURE_OF_WORK"></td>                                                                        
+                                    <td ng-bind="x.CLIENT_GROUP"></td>
+                                    <td ng-bind="x.NATURE_OF_WORK"></td>
                                     <td ng-bind="x.START_DATE"></td>
                                     <td ng-bind="x.DUE_DATE"></td>
                                     <td ng-bind="x.CLOSED_DATE"></td>
                                     <td ng-bind="x.STATUS"></td>
                                     <td ng-bind="x.DESCRIPTION"></td>
                                     <td ng-bind="x.PRIORITY"></td>
-                                    
+
                                     <td ng-bind="x.TASK_OWNER_NAME"></td>
                                     <td>
                                         <button data-toggle="modal" ng-click="ViewTaskDetail(x)" href="#modalDefault" type="button" title="View Task"
@@ -391,10 +392,40 @@
                     </div>
 
                 </div>
-                <%--</div>--%>                
+                <%--</div>--%>
                 <%--</div>--%>
             </div>
         </div>
+        <script>
+            function setDropDown() {
+                setTimeout(function () {
+                    var url = window.location.href;
+                    var RequestedTask = url.split('=');
+                    var FilterOption = RequestedTask[1];
+                    //$("#FilterTask").val(FilterOption);
+                    if (FilterOption==="NotStarted") {
+                         document.getElementById('FilterTask').value = "Not Started";
+                    }
+                    else if (FilterOption==="Inprogress") {
+                         document.getElementById('FilterTask').value = "In Progress";
+                    }
+                      else if (FilterOption==="Waitingforinput") {
+                         document.getElementById('FilterTask').value = "Not Started";
+                    }
+                     else if (FilterOption==="Completed") {
+                         document.getElementById('FilterTask').value = "closetask";
+                    }
+                     else if (FilterOption==="TodayTask") {
+                         document.getElementById('FilterTask').value = "todaystask";
+                    }
+                   
+                }, 500);
+
+            }
+            setDropDown();
+
+
+        </script>
     </section>
 
 </asp:Content>

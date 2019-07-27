@@ -18,7 +18,7 @@ namespace TaskManager.Models
         public void ExecuteQuery(string qry)
         {
             cnn.Open();
-            SqlCommand cmd = new SqlCommand();
+             SqlCommand cmd = new SqlCommand();
             cmd.Connection = cnn;
             cmd.CommandText = qry;
             cmd.ExecuteNonQuery();

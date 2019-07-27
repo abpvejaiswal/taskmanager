@@ -242,7 +242,7 @@
                     <div class="row">
                         <div class="col-sm-2">
                             <%--onchange="FilterDropdownChange(this)" --%>
-                            <select class="form-control" ng-change="FilterDropdownChange()" ng-model="FilterOption">
+                            <select class="form-control" ng-change="FilterDropdownChange()" ng-model="FilterOption" id="FilterTask">
                                 <option value="todays+overdue">Todays + Overdue Task</option>
                                 <option value="myopentask">My Open Task</option>
                                 <option value="next7daystask">Next 7 days Task</option>
@@ -365,5 +365,34 @@
                 <%--</div>--%>
             </div>
         </div>
+         <script>
+             function setDropDown() {
+                 debugger
+                setTimeout(function () {
+                    var url = window.location.href;
+                    var RequestedTask = url.split('=');
+                    var FilterOption = RequestedTask[1];
+                    //$("#FilterTask").val(FilterOption);
+                    if (FilterOption==="NotStarted") {
+                         document.getElementById('FilterTask').value = "Not Started";
+                    }
+                    else if (FilterOption==="Inprogress") {
+                         document.getElementById('FilterTask').value = "In Progress";
+                    }
+                      else if (FilterOption==="Waitingforinput") {
+                         document.getElementById('FilterTask').value = "Not Started";
+                    }
+                     else if (FilterOption==="Completed") {
+                         document.getElementById('FilterTask').value = "closetask";
+                    }
+                     else if (FilterOption==="TodayTask") {
+                         document.getElementById('FilterTask').value = "todaystask";
+                    }
+                   
+                }, 500);
+
+            }
+            setDropDown();
+        </script>
     </section>
 </asp:Content>

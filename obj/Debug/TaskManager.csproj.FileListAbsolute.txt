@@ -20,3 +20,15 @@ D:\PROJECT\TaskManager\TaskManager\obj\Debug\TaskManager.csproj.CoreCompileInput
 D:\PROJECT\TaskManager\TaskManager\obj\Debug\TaskManager.csproj.CopyComplete
 D:\PROJECT\TaskManager\TaskManager\obj\Debug\TaskManager.dll
 D:\PROJECT\TaskManager\TaskManager\obj\Debug\TaskManager.pdb
+E:\Projects\Anant\TaskManager\bin\TaskManager.dll.config
+E:\Projects\Anant\TaskManager\bin\TaskManager.dll
+E:\Projects\Anant\TaskManager\bin\TaskManager.pdb
+E:\Projects\Anant\TaskManager\bin\AjaxControlToolkit.dll
+E:\Projects\Anant\TaskManager\bin\Common.dll
+E:\Projects\Anant\TaskManager\bin\itextsharp.dll
+E:\Projects\Anant\TaskManager\bin\AjaxControlToolkit.pdb
+E:\Projects\Anant\TaskManager\obj\Debug\TaskManager.csprojAssemblyReference.cache
+E:\Projects\Anant\TaskManager\obj\Debug\TaskManager.csproj.CoreCompileInputs.cache
+E:\Projects\Anant\TaskManager\obj\Debug\TaskManager.csproj.CopyComplete
+E:\Projects\Anant\TaskManager\obj\Debug\TaskManager.dll
+E:\Projects\Anant\TaskManager\obj\Debug\TaskManager.pdb

@@ -28,15 +28,14 @@ app.controller('ToDoListController', function ($scope, $http, $window, ngProgres
 
     $scope.ADD_TASK = { ASSIGN_TO: '0', SUBJECT: '', START_DATE: '', CONTACT_PERSON: '0', CONTACT_NUMBER: '', CONTACT_EMAIL_ID: '', TARGETED_DAYS: '',FINANCIAL_YEAR:'0', ASSESSMENT_YEAR: '', DUE_DATE: '', STATUS: 'Not Started', PRIORITY: 'High', IS_REPEAT: false, REPEAT_TYPE: 'None', REPEAT_FOR_EVERYDAY: '1', REPEAT_FOR_EVERYWEEK: '1', IS_ON_DAYWISE: true, MONTH_DAYS_NO: '1', MONTH_DAY_NO: '1', MONTH_WEEK_SEQUENCE_TYPE: 'First', MONTH_WEEKSEQUENCE_DAY: 'Sunday', MONTH_WEEKSEQUENCE_MONTH_NO: '1', DESCRIPTION: '', IS_EVERY_DAY: true, REPEAT_WEEK_ON: '', IS_YEARLY_DAYS_ON: false, YEARLY_DAYS_OF_MONTH: '1', YEARLY_DAYS_NO: '1', YEARLY_WEEKSEQUENCE_TYPE: 'First', YEARLY_WEEKSEQUENCE_NO: 'Sunday', YEARLY_WEEKSEQUENCE_MONTH_NAME: '1', REMINDER_DAY_BEFORE: '' };
     //$scope.ADD_TASK.REPEAT_WEEK_ON = {};
-    $scope.progressbar = ngProgressFactory.createInstance();
+    $scope.progressbar = ngProgressFactory.createInstance(); 
     $scope.color = 'firebrick';
     $scope.height = '5px';
     // $scope.progressbar.start();
-
+    debugger
     //Fill the contact number and contact email id by contact number
     $scope.ChangeContactPerson  = function () {
         var number_email = $(".CONTACT_PERSON").val().split(',');        
-        debugger;
         console.log(number_email);
         $scope.ADD_TASK.CONTACT_NUMBER = number_email[0];
         $scope.ADD_TASK.CONTACT_EMAIL_ID = number_email[1];
@@ -50,7 +49,6 @@ app.controller('ToDoListController', function ($scope, $http, $window, ngProgres
     $scope.GetTargetedDays = function (targeted_days) {
         var wr = $("#START_DATE").val();
         $scope.mydate = new Date(wr);        
-        debugger
         $scope.mydate.setDate($scope.mydate.getDate() + parseInt(targeted_days));
         $scope.ddMMyyyy = $filter('date')($scope.mydate, 'yyyy-MM-dd');
         $("#DUE_DATE").val($scope.ddMMyyyy);
@@ -238,7 +236,6 @@ app.controller('ToDoListController', function ($scope, $http, $window, ngProgres
             data: data,
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         }).then(function (success) {
-            debugger;
             console.log(success.data);
             alert(success.data.MESSAGE);
             $scope.progressbar.complete();
@@ -254,7 +251,6 @@ app.controller('ToDoListController', function ($scope, $http, $window, ngProgres
     }
 
     $scope.UpdateTask = function (TASK_DETAIL, IS_CLOSED) {
-        debugger;
         $scope.progressbar.start();
         var data = $.param({
             type: "close_task",
@@ -294,8 +290,6 @@ app.controller('ToDoListController', function ($scope, $http, $window, ngProgres
 
 
     $scope.FilterDropdownChange = function () {
-
-        debugger;
         if ($scope.FilterOption == 'filterbydate') {
             $("#filterbydate").show();
         }
@@ -331,8 +325,6 @@ app.controller('ToDoListController', function ($scope, $http, $window, ngProgres
     //    return (parseInt(item.PRICE) >= $scope.lower_price_bound && parseInt(item.PRICE) <= $scope.upper_price_bound);
     //};
     $scope.FilterDropdownChangeAllTask = function () {
-
-        debugger;
         if ($scope.FilterOption == 'filterbydate') {
             $("#filterbydate").show();
         }

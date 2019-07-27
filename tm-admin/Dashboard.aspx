@@ -48,15 +48,13 @@
 
 
         <div class="container">
-            <div class="block-header">                
+            <div class="block-header">
             </div>
 
             <div class="mini-charts">
                 <div class="row">
-
-                    
                     <div class="col-sm-6 col-md-3">
-                        <a href="MyTask.aspx">
+                        <a href="<% =LoginType=="Admin"?"AllTask.aspx?Filter=NotStarted":"MyTask.aspx?Filter=NotStarted" %>">
                             <div class="mini-charts-item bgm-orange">
                                 <div class="clearfix">
                                     <div class="chart stats-bar"></div>
@@ -70,9 +68,9 @@
                         </a>
                     </div>
 
-                    
+
                     <div class="col-sm-6 col-md-3">
-                        <a href="MyTask.aspx">
+                      <a href="<% =LoginType=="Admin"?"AllTask.aspx?Filter=Inprogress":"MyTask.aspx?Filter=Inprogress" %>">
                             <div class="mini-charts-item bgm-purple">
                                 <div class="clearfix">
                                     <div class="chart stats-bar"></div>
@@ -86,9 +84,9 @@
                         </a>
                     </div>
 
-                    
+
                     <div class="col-sm-6 col-md-3">
-                        <a href="MyTask.aspx">
+                        <a href="<% =LoginType=="Admin"?"AllTask.aspx?Filter=Waitingforinput":"MyTask.aspx?Filter=Waitingforinput" %>">
                             <div class="mini-charts-item bgm-amber">
                                 <div class="clearfix">
                                     <div class="chart stats-bar"></div>
@@ -102,9 +100,9 @@
                         </a>
                     </div>
 
-                    
+
                     <div class="col-sm-6 col-md-3">
-                        <a href="MyTask.aspx">
+                       <a href="<% =LoginType=="Admin"?"AllTask.aspx?Filter=Completed":"MyTask.aspx?Filter=Completed" %>">
                             <div class="mini-charts-item bgm-green">
                                 <div class="clearfix">
                                     <div class="chart stats-bar"></div>
@@ -118,7 +116,7 @@
                         </a>
                     </div>
                     <div class="col-sm-6 col-md-3">
-                        <a href="MyTask.aspx">
+                        <a href="<% =LoginType=="Admin"?"AllTask.aspx?Filter=TodayTask":"MyTask.aspx?Filter=TodayTask" %>">
                             <div class="mini-charts-item bgm-cyan">
                                 <div class="clearfix">
                                     <div class="chart stats-bar"></div>
@@ -218,7 +216,7 @@
                                 </asp:Repeater>
 
 
-                                  <div class="col-sm-4">
+                                <div class="col-sm-4">
                                     <div class="card">
                                         <div class="card-header bgm-teal">
                                             <h2>Anant Jaiswal<br />
