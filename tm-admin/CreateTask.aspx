@@ -93,7 +93,7 @@
                                 <div class="form-group m-b-10">
                                     <div class="fg-line ">
                                         <label class="fg-label">Assign to <span style="color: red;">* </span></label>
-                                        <asp:DropDownList runat="server" ClientIDMode="Static" ng-model="ADD_TASK.ASSIGN_TO" ID="ddlEmployee" CssClass="selectpicker ddlEmployee" data-placeholder="Please select an employee" data-live-search="true">
+                                        <asp:DropDownList runat="server" TabIndex="1" ClientIDMode="Static" ng-model="ADD_TASK.ASSIGN_TO" ID="ddlEmployee" CssClass="selectpicker ddlEmployee" data-placeholder="Please select an employee" data-live-search="true">
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -101,7 +101,7 @@
                             <div class="col-sm-3">
                                 <div class="form-group fg-float">
                                     <div class="fg-line">
-                                        <input type="text" required ng-model="ADD_TASK.SUBJECT" class="form-control" />
+                                        <input type="text" required ng-model="ADD_TASK.SUBJECT" tabindex="2" class="form-control" />
                                     </div>
                                     <label class="fg-label">Client Name <%--(replaced in Subject)--%> <span style="color: red;">* </span></label>
                                 </div>
@@ -110,7 +110,7 @@
                                 <div class="form-group m-b-10">
                                     <div class="fg-line ">
                                         <label class="fg-label">Client Group<span style="color: red;"> </span></label>
-                                        <asp:DropDownList runat="server" ClientIDMode="Static" ID="ddlClientGroup" CssClass="selectpicker CLIENT_GROUP" data-placeholder="Please select an client group" data-live-search="true">
+                                        <asp:DropDownList runat="server" ClientIDMode="Static" TabIndex="3" ID="ddlClientGroup" CssClass="selectpicker CLIENT_GROUP" data-placeholder="Please select an client group" data-live-search="true">
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -120,7 +120,7 @@
                                 <div class="form-group m-b-10">
                                     <div class="fg-line ">
                                         <label class="fg-label">Nature Of Work<span style="color: red;"> </span></label>
-                                        <asp:DropDownList runat="server" ClientIDMode="Static" ID="ddlNatureOfWork" CssClass="selectpicker NATURE_OF_WORK" data-live-search="true">
+                                        <asp:DropDownList runat="server" ClientIDMode="Static" TabIndex="4" ID="ddlNatureOfWork" CssClass="selectpicker NATURE_OF_WORK" data-live-search="true">
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -131,7 +131,7 @@
                                         <div class="form-group m-b-10">
                                             <div class="fg-line ">
                                                 <label class="fg-label">Contact Person<span style="color: red;">*</span></label>
-                                                <asp:DropDownList runat="server" ID="ddlContactPerson" CssClass="form-control CONTACT_PERSON" OnSelectedIndexChanged="ddlContactPerson_SelectedIndexChanged" ng-change="ChangeContactPerson()" ng-model="ADD_TASK.CONTACT_PERSON" AutoPostBack="false" data-placeholder="Please select an client group" data-live-search="true">
+                                                <asp:DropDownList runat="server" ID="ddlContactPerson" TabIndex="5" CssClass="selectpicker CONTACT_PERSON" data-placeholder="Please select an contact person" data-live-search="true" ng-change="ChangeContactPerson()" ng-model="ADD_TASK.CONTACT_PERSON">
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
@@ -140,7 +140,7 @@
                                     <div class="col-sm-2">
                                         <div class="form-group fg-float">
                                             <div class="fg-line myfg">
-                                                <asp:TextBox runat="server" ID="txtCONTACT_NUMBER" CssClass="form-control" ng-model="ADD_TASK.CONTACT_NUMBER"></asp:TextBox>                                                
+                                                <asp:TextBox runat="server" ID="txtCONTACT_NUMBER" TabIndex="6" ClientIDMode="Static" CssClass="form-control" ng-model="ADD_TASK.CONTACT_NUMBER"></asp:TextBox>                                                
                                             </div>
                                             <label class="fg-label">Contact Number<span style="color: red;">*</span></label>
                                         </div>
@@ -149,7 +149,7 @@
                                     <div class="col-sm-2">
                                         <div class="form-group fg-float">
                                             <div class="fg-line myfg">
-                                                <asp:TextBox runat="server" ID="txtCONTACT_EMAIL_ID" CssClass="form-control " ng-model="ADD_TASK.CONTACT_EMAIL_ID"></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="txtCONTACT_EMAIL_ID" TabIndex="7" ClientIDMode="Static" CssClass="form-control " ng-model="ADD_TASK.CONTACT_EMAIL_ID"></asp:TextBox>
                                                 <%--<input type="text" class="form-control " ng-model="ADD_TASK.CONTACT_EMAIL_ID" />--%>
                                             </div>
                                             <label class="fg-label">Email ID<span style="color: red;">*</span></label>
@@ -161,7 +161,7 @@
                                 <div class="form-group m-b-10">
                                     <div class="fg-line ">
                                         <label class="fg-label">Select Financial Year/Month<span style="color: red;"> </span></label>
-                                        <asp:DropDownList runat="server" ClientIDMode="Static" ID="ddlYear" CssClass="form-control FINANCIAL_YEAR" ng-change="ChangeYear(ADD_TASK.FINANCIAL_YEAR)" ng-model="ADD_TASK.FINANCIAL_YEAR" data-placeholder="Please select an year" data-live-search="true">
+                                        <asp:DropDownList runat="server" ClientIDMode="Static" TabIndex="8" ID="ddlYear" CssClass="selectpicker FINANCIAL_YEAR" ng-model="ADD_TASK.FINANCIAL_YEAR" data-placeholder="Please select an year" data-live-search="true">
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -170,7 +170,7 @@
                             <div class="col-sm-2">
                                 <div class="form-group fg-float">
                                     <div class="fg-line fg-toggled">
-                                        <input type="text" class="form-control ASSESSMENT_YEAR" ng-model="ADD_TASK.ASSESSMENT_YEAR" />
+                                        <input type="text" id="txtASSESSMENT_YEAR" tabindex="9" class="form-control ASSESSMENT_YEAR" ng-model="ADD_TASK.ASSESSMENT_YEAR" />
                                     </div>
                                     <label class="fg-label">Assessment Year/Month</label>
                                 </div>
@@ -181,7 +181,7 @@
                             <div class="col-sm-2">
                                 <div class="form-group fg-float">
                                     <div class="fg-line">
-                                        <input type="text" id="START_DATE" ng-model="ADD_TASK.START_DATE" class="form-control date-picker" />
+                                        <input type="text" id="START_DATE" tabindex="10" ng-model="ADD_TASK.START_DATE" class="form-control date-picker" />
                                     </div>
                                     <label class="fg-label">Work Recieved on<span style="color: red;"> * </span></label>
                                 </div>
@@ -190,7 +190,7 @@
                             <div class="col-sm-3">
                                 <div class="form-group fg-float">
                                     <div class="fg-line fg-targeted">
-                                        <input type="text" ng-model="ADD_TASK.TARGETED_DAYS" ng-change="GetTargetedDays(ADD_TASK.TARGETED_DAYS)" class="form-control" />
+                                        <input type="text" ng-model="ADD_TASK.TARGETED_DAYS" tabindex="11" ng-change="GetTargetedDays(ADD_TASK.TARGETED_DAYS)" class="form-control" />
                                     </div>
                                     <label class="fg-label">Targeted Days for work completion<span style="color: red;"> * </span></label>
                                 </div>
@@ -198,7 +198,7 @@
                             <div class="col-sm-3">
                                 <div class="form-group fg-float">
                                     <div class="fg-line">
-                                        <input type="text" id="DUE_DATE" ng-model="ADD_TASK.DUE_DATE" class="form-control date-picker" />
+                                        <input type="text" id="DUE_DATE" tabindex="12" ng-model="ADD_TASK.DUE_DATE" class="form-control date-picker" />
                                     </div>
                                     <label class="fg-label">Targated Date of work finish<span style="color: red;"> * </span></label>
                                 </div>

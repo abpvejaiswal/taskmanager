@@ -14,7 +14,7 @@
                     this.checked = true;
                 });
                 $("#spanalldeleted").show();
-            }FilterTask
+            }
             else {
                 $('.checkbox_grid').each(function () {
                     this.checked = false;
@@ -200,6 +200,9 @@
                         <a href="CreateTask.aspx" class="pull-right btn btn-info">
                             <i class="zmdi zmdi-plus text-center"></i>&nbsp;Create Task</a>
 
+                        <a class="pull-right btn btn-info" style="margin-right: 10px;" ng-click="Export()">
+                            <i class="zmdi zmdi-file text-center"></i>&nbsp;Export To Excel</a>
+
                     </h2>
                     <h2>
                         <asp:Literal runat="server" ID="ltrnotfound"></asp:Literal>
@@ -223,7 +226,7 @@
                                 <option value="In Progress">In Progress Task</option>
                                 <option value="Not Started">Not Started Task</option>
                                 <option value="yesterdaycomletetask">Yesterday Completed Task</option>
-                                <option value="waiting4input">Waiting for input</option>
+                                <option value="Waiting for input">Waiting for input</option>
 
                             </select>
 
@@ -256,6 +259,7 @@
                     <div role="tabpanel" class="tab-pane active" id="opentask">--%>
                 <div class="table-responsive">
                     <div class="card-body">
+
                         <span style="margin-left: 10px;" id="spanalldeleted">
                             <button type="button" title="Delete" ng-confirm-click="Are You Sure To Delete this Record ? " confirmed-click="DeleteSeletedTask()"
                                 class="btn btn-danger waves-effect waves-float">
@@ -263,7 +267,7 @@
                             </button>
                         </span>
 
-                        <table class="table table-hover" datatable="ng">
+                        <table class="table table-hover" datatable="ng" id="tblTask">
                             <thead>
                                 <tr>
                                     <%--<th>#</th>--%>
@@ -398,28 +402,26 @@
         </div>
         <script>
             function setDropDown() {
-                setTimeout(function () {
-                    var url = window.location.href;
-                    var RequestedTask = url.split('=');
-                    var FilterOption = RequestedTask[1];
-                    //$("#FilterTask").val(FilterOption);
-                    if (FilterOption==="NotStarted") {
-                         document.getElementById('FilterTask').value = "Not Started";
-                    }
-                    else if (FilterOption==="Inprogress") {
-                         document.getElementById('FilterTask').value = "In Progress";
-                    }
-                      else if (FilterOption==="Waitingforinput") {
-                         document.getElementById('FilterTask').value = "Not Started";
-                    }
-                     else if (FilterOption==="Completed") {
-                         document.getElementById('FilterTask').value = "closetask";
-                    }
-                     else if (FilterOption==="TodayTask") {
-                         document.getElementById('FilterTask').value = "todaystask";
-                    }
-                   
-                }, 500);
+                var url = window.location.href;
+                var RequestedTask = url.split('=');
+                var FilterOption = RequestedTask[1];
+                //$("#FilterTask").val(FilterOption);
+                if (FilterOption === "NotStarted") {
+                    document.getElementById('FilterTask').value = "Not Started";
+                }
+                else if (FilterOption === "Inprogress") {
+                    document.getElementById('FilterTask').value = "In Progress";
+                }
+                else if (FilterOption === "Waitingforinput") {
+                    document.getElementById('FilterTask').value = "Not Started";
+                }
+                else if (FilterOption === "Completed") {
+                    document.getElementById('FilterTask').value = "closetask";
+                }
+                else if (FilterOption === "TodayTask") {
+                    document.getElementById('FilterTask').value = "todaystask";
+                }
+
 
             }
             setDropDown();

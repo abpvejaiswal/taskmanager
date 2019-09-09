@@ -116,12 +116,12 @@
                         </a>
                     </div>
                     <div class="col-sm-6 col-md-3">
-                        <a href="<% =LoginType=="Admin"?"AllTask.aspx?Filter=TodayTask":"MyTask.aspx?Filter=TodayTask" %>">
+                        <a href="<% =LoginType=="Admin"?"AllTask.aspx?Filter=todays+overdue":"MyTask.aspx?Filter=todays+overdue" %>">
                             <div class="mini-charts-item bgm-cyan">
                                 <div class="clearfix">
                                     <div class="chart stats-bar"></div>
                                     <div class="count">
-                                        <h4 style="color: white">Today's Task</h4>
+                                        <h4 style="color: white">Today's and Overdue Task</h4>
                                         <h2>
                                             <asp:Literal runat="server" Text="0" ID="ltrTodayTask"></asp:Literal></h2>
                                     </div>
@@ -130,7 +130,7 @@
                         </a>
                     </div>
                     <div class="col-sm-6 col-md-3">
-                        <a href="#">
+                        <a href="<% =LoginType=="Admin"?"AllTask.aspx?Filter=alltask":"MyTask.aspx?Filter=alltask" %>">
                             <div class="mini-charts-item bgm-lightblue">
                                 <div class="clearfix">
                                     <div class="chart stats-bar-2"></div>

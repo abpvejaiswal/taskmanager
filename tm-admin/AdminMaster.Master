@@ -140,6 +140,8 @@
     <script src="angular/progressbar/ngprogress.js"></script>
     <link href="angular/progressbar/ngProgress.css" rel="stylesheet" />
 
+    
+
     <script src="angular/datatable/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
     <script src="angular/datatable/angular-datatables.js"></script>
@@ -148,7 +150,7 @@
     <link rel="stylesheet" href="http://mbenford.github.io/ngTagsInput/css/ng-tags-input.min.css" />
     <script src="http://mbenford.github.io/ngTagsInput/js/ng-tags-input.min.js"></script>
 
-
+    
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -659,6 +661,9 @@
     </script>
     <script src="angular/progressbar/ngprogress.js"></script>
     <link href="angular/progressbar/ngProgress.css" rel="stylesheet" />
+
+    <%--<script src="//cdn.rawgit.com/rainabba/jquery-table2excel/1.1.0/dist/jquery.table2excel.min.js"></script>--%>
+    <script src="js/jquery.table2excel.js"></script>
 
     <script>
         //For moving up the lable by default

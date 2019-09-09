@@ -1,49 +1,50 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/tm-admin/AdminMaster.Master" AutoEventWireup="true" CodeBehind="MyTask.aspx.cs" Inherits="TaskManager.tm_admin.MyTask" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-       <script>
+    <script>
 
-           $(document).ready(function () {
-               $(".spanalldeleted").hide();
-               $("#filterbydate").hide();
+        $(document).ready(function () {
+            $(".spanalldeleted").hide();
+            $("#filterbydate").hide();
 
 
-           });
+        });
 
-           function CheckAll(check) {
-               if (check.checked) {
-                   $('.checkbox_grid').each(function () {
-                       this.checked = true;
-                   });
-                   $(".spanalldeleted").show();
-               }
-               else {
-                   $('.checkbox_grid').each(function () {
-                       this.checked = false;
-                   });
-                   $(".spanalldeleted").hide();
-               }
-           }
+        function CheckAll(check) {
+            if (check.checked) {
+                $('.checkbox_grid').each(function () {
+                    this.checked = true;
+                });
+                $(".spanalldeleted").show();
+            }
+            else {
+                $('.checkbox_grid').each(function () {
+                    this.checked = false;
+                });
+                $(".spanalldeleted").hide();
+            }
+        }
 
-           function IsCheckedOrNot(check) {
-               //alert(check.checked);
-               //if (check.checked == true)
-               //    $(".spanalldeleted").show();
-               //else
-               //    $(".spanalldeleted").hide();
+        function IsCheckedOrNot(check) {
+            //alert(check.checked);
+            //if (check.checked == true)
+            //    $(".spanalldeleted").show();
+            //else
+            //    $(".spanalldeleted").hide();
 
-               var i = 0;
-               $('.checkbox_grid').each(function () {
-                   //alert(this.checked);
-                   if (this.checked == true) {
-                       i++;
-                   }
-               });
+            var i = 0;
+            $('.checkbox_grid').each(function () {
+                //alert(this.checked);
+                if (this.checked == true) {
+                    i++;
+                }
+            });
 
-               if (i >= 1)
-                   $(".spanalldeleted").show();
-               else
-                   $(".spanalldeleted").hide();
-           }
+            if (i >= 1)
+                $(".spanalldeleted").show();
+            else
+                $(".spanalldeleted").hide();
+        }
 
     </script>
     <script>
@@ -68,10 +69,10 @@
                 debugger;
                 var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
                 var firstDate = new Date(2018, 01, 12);
-                var secondDate = new Date(2018,01, 22);
+                var secondDate = new Date(2018, 01, 22);
 
                 var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
-            }           
+            }
             //$("#ACTUAL_DAYS_TAKEN").text(data.value);
             //new Date(Date.parse('03-06-2018')).format("MM/dd/yyyy");
 
@@ -109,7 +110,7 @@
             var endDay = new Date(new Date(Date.parse(work_rcv_date)).format("yyyy/MM/dd"));
 
 
-            
+
             var millisBetween = actual_date.getTime() - endDay.getTime();
             var days = millisBetween / millisecondsPerDay;
 
@@ -124,7 +125,7 @@
             var timeDiff = actual_date - due_date;
             var actual_days = Math.ceil(timeDiff / (1000 * 3600 * 24));
             $("#ACTUAL_DAYS_TAKEN").text(Math.floor(days))
-        }       
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -149,7 +150,7 @@
                                     <tr>
                                         <td>Due Date</td>
                                         <td><span id="spanDueDate" ng-bind="TASK_DETAIL.DUE_DATE"></span></td>
-                                    </tr>      
+                                    </tr>
                                     <%--<tr>
                                         <td>Repeat type</td>
                                         <td><span ng-bind="TASK_DETAIL.REPEAT_TYPE"></span></td>
@@ -162,19 +163,19 @@
                                                 <option>In Progress</option>
                                                 <option>Waiting for input</option>
                                                 <option>Completed</option>
-                                            </select>                                            
+                                            </select>
                                         </td>
                                     </tr>
-                                                                        
+
                                     <tr class="trCompleted">
                                         <td>Actual Date of Work finish</td>
                                         <td>
-                                               <input type="hidden" id="hdnWorkRecieveDate" ng-value="TASK_DETAIL.START_DATE" />
+                                            <input type="hidden" id="hdnWorkRecieveDate" ng-value="TASK_DETAIL.START_DATE" />
                                             <input type="text" id="ACTUAL_WORK_FINISH_DATE" onmouseout="ChangeActualDate(this)"
-                                                  class="form-control date-picker" />
+                                                class="form-control date-picker" />
                                             <%--onblur="ChangeActualDate(this)"--%>
-                                         </td>
-                                    </tr>                                                                        
+                                        </td>
+                                    </tr>
                                     <tr class="trCompleted">
                                         <td>Actual Days taken</td>
                                         <td><span ng-bind="TASK_DETAIL.ACTUAL_DAYS_TAKEN" id="ACTUAL_DAYS_TAKEN"></span></td>
@@ -188,7 +189,7 @@
                                                     <input id="tsworkfromhome" ng-model="TASK_DETAIL.WORK_FROM_HOME" type="checkbox" ng-true-value="true" ng-false-value="false" name="WORK_FROM_HOME" hidden="hidden">
                                                     <label for="tsworkfromhome" class="ts-helper"></label>
                                                 </div>
-                                            </div>                                            
+                                            </div>
                                         </td>
                                     </tr>
 
@@ -196,7 +197,7 @@
                                     <tr>
                                         <td>Description</td>
                                         <td>
-                                            <textarea disabled="disabled" class="form-control" ng-model="TASK_DETAIL.DESCRIPTION"></textarea>                                            
+                                            <textarea disabled="disabled" class="form-control" ng-model="TASK_DETAIL.DESCRIPTION"></textarea>
                                         </td>
                                     </tr>
                                     <tr>
@@ -204,7 +205,7 @@
                                         <td>
                                             <textarea class="form-control" ng-model="TASK_DETAIL.NOTES"></textarea>
                                         </td>
-                                    </tr>                                    
+                                    </tr>
                                 </table>
                             </div>
                         </div>
@@ -230,9 +231,13 @@
                 <div class="card-header">
                     <h2>My Task
                         <a href="#" class="notifications btn btn-success" style="visibility: hidden;" data-type="success">Success</a>
-                        
+
 
                         <span class="pull-right" style="width: 200px;"></span>
+
+                        <a class="pull-right btn btn-info" style="margin-right: 10px;" ng-click="Export()">
+                            <i class="zmdi zmdi-file text-center"></i>&nbsp;Export To Excel</a>
+
                     </h2>
                     <h2>
                         <asp:Literal runat="server" ID="ltrnotfound"></asp:Literal>
@@ -280,7 +285,7 @@
                 </div>
                 <%--<div role="tabpanel" class="tab-pane active" id="opentask">--%>
                 <div class="table-responsive">
-                    <div class="card-body">                        
+                    <div class="card-body">
                         <span style="margin-left: 10px;" class="spanalldeleted" id="spanalldeleted" runat="server">
                             <button type="button" title="Delete" ng-confirm-click="Are You Sure To Delete this Record ? " confirmed-click="DeleteSeletedTask()"
                                 class="btn btn-danger waves-effect waves-float">
@@ -289,7 +294,7 @@
                         </span>
 
 
-                        <table class="table table-hover" datatable="ng">
+                        <table class="table table-hover" datatable="ng" id="tblTask">
                             <thead>
                                 <tr>
                                     <%--<th>#</th>--%>
@@ -300,19 +305,19 @@
                                                 <i class="input-helper"></i>
                                             </label>
                                         </div>
-                                    </th>                                    
+                                    </th>
                                     <th>Client Name</th>
                                     <th>Contact Person</th>
                                     <th>Client Number</th>
                                     <th>Email ID</th>
                                     <th>Client Group</th>
-                                    <th>Nature Of Work</th>                                    
+                                    <th>Nature Of Work</th>
                                     <th>Work Recieved On</th>
                                     <th>Due Date</th>
                                     <th>Closed Date</th>
                                     <th>Status</th>
                                     <th>Remark</th>
-                                    <th>Priority</th>                                    
+                                    <th>Priority</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -327,26 +332,26 @@
                                         </div>
                                     </td>
                                     <%--<td><span>{{$index+1}}</span>
-                                            </td>--%>            
+                                            </td>--%>
                                     <td ng-bind="x.SUBJECT"></td>
                                     <td ng-bind="x.CONTACT_PERSON"></td>
-                                    <td ng-bind="x.CONTACT_NUMBER"></td>                        
+                                    <td ng-bind="x.CONTACT_NUMBER"></td>
                                     <td ng-bind="x.CONTACT_EMAIL_ID"></td>
-                                    <td ng-bind="x.CLIENT_GROUP"></td>      
-                                    <td ng-bind="x.NATURE_OF_WORK"></td>                              
+                                    <td ng-bind="x.CLIENT_GROUP"></td>
+                                    <td ng-bind="x.NATURE_OF_WORK"></td>
                                     <td ng-bind="x.START_DATE"></td>
                                     <td ng-bind="x.DUE_DATE"></td>
                                     <td ng-bind="x.CLOSED_DATE"></td>
                                     <td ng-bind="x.STATUS"></td>
                                     <td ng-bind="x.DESCRIPTION"></td>
-                                    <td ng-bind="x.PRIORITY"></td>                                    
+                                    <td ng-bind="x.PRIORITY"></td>
                                     <td>
                                         <button data-toggle="modal" ng-click="ViewTaskDetail(x)" href="#modalDefault" type="button" title="View Task"
                                             class="btn btn-primary waves-effect waves-float">
                                             <i class="zmdi zmdi-eye"></i>
                                         </button>
-                                        
-                                        <button ng-if="x.POST_ID=='1'"  type="button" title="Delete" ng-confirm-click="Are You Sure To Delete this Record ? " confirmed-click="DeleteTask(x.ID,'mytask')"
+
+                                        <button ng-if="x.POST_ID=='1'" type="button" title="Delete" ng-confirm-click="Are You Sure To Delete this Record ? " confirmed-click="DeleteTask(x.ID,'mytask')"
                                             class="btn btn-danger waves-effect waves-float">
                                             <i class="zmdi zmdi-delete"></i>
                                         </button>
@@ -355,40 +360,40 @@
                                 </tr>
                             </tbody>
                         </table>
-                        
+
                     </div>
 
                 </div>
                 <%--</div>--%>
 
-                
+
                 <%--</div>--%>
             </div>
         </div>
-         <script>
-             function setDropDown() {
-                 debugger
+        <script>
+            function setDropDown() {
+                debugger
                 setTimeout(function () {
                     var url = window.location.href;
                     var RequestedTask = url.split('=');
                     var FilterOption = RequestedTask[1];
                     //$("#FilterTask").val(FilterOption);
-                    if (FilterOption==="NotStarted") {
-                         document.getElementById('FilterTask').value = "Not Started";
+                    if (FilterOption === "NotStarted") {
+                        document.getElementById('FilterTask').value = "Not Started";
                     }
-                    else if (FilterOption==="Inprogress") {
-                         document.getElementById('FilterTask').value = "In Progress";
+                    else if (FilterOption === "Inprogress") {
+                        document.getElementById('FilterTask').value = "In Progress";
                     }
-                      else if (FilterOption==="Waitingforinput") {
-                         document.getElementById('FilterTask').value = "Not Started";
+                    else if (FilterOption === "Waitingforinput") {
+                        document.getElementById('FilterTask').value = "Not Started";
                     }
-                     else if (FilterOption==="Completed") {
-                         document.getElementById('FilterTask').value = "closetask";
+                    else if (FilterOption === "Completed") {
+                        document.getElementById('FilterTask').value = "closetask";
                     }
-                     else if (FilterOption==="TodayTask") {
-                         document.getElementById('FilterTask').value = "todaystask";
+                    else if (FilterOption === "TodayTask") {
+                        document.getElementById('FilterTask').value = "todaystask";
                     }
-                   
+
                 }, 500);
 
             }

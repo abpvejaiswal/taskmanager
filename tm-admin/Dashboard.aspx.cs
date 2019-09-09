@@ -19,7 +19,7 @@ namespace TaskManager.tm_admin
             {
                 LoginType = "Admin";
             }
-                if (!IsPostBack)
+            if (!IsPostBack)
             {
                 BindData();
                 if (Request.Cookies["ADMIN_NAME"].Value == "Admin")
@@ -139,15 +139,16 @@ namespace TaskManager.tm_admin
             {
                 SqlCommand cmd = new SqlCommand();
                 cmd.Parameters.Add("@EMP_ID", Request.Cookies["ADMIN_ID"].Value);
-                
-                if (Request.Cookies["POST_ID"].Values.ToString() != "1"){
+
+                if (Request.Cookies["POST_ID"].Values.ToString() != "1")
+                {
                     cmd.Parameters.Add("@ROLE", "EMP");
                 }
                 else
                 {
-                    cmd.Parameters.Add("@ROLE", "ADMIN");              
+                    cmd.Parameters.Add("@ROLE", "ADMIN");
                 }
-                
+
                 cmd.CommandText = "GET_DASHBOARD_COUNT";
                 DataTable dt = D.GetDataWithSP(cmd);
                 ltrTodayTask.Text = dt.Rows[0]["TODAY_OVERDUE_TASK"].ToString();

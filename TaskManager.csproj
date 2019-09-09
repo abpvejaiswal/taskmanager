@@ -99,6 +99,7 @@
     <Content Include="tm-admin\img\logo\favicon.png" />
     <Content Include="tm-admin\img\logo\logo.jpg" />
     <Content Include="tm-admin\img\logo\logo.png" />
+    <Content Include="tm-admin\js\jquery.table2excel.js" />
     <Content Include="tm-admin\scss\gsdk-bootstrap-wizard.scss" />
     <Content Include="tm-admin\scss\gsdk-bootstrap-wizard\mixins\_vendor-prefixes.scss" />
     <Content Include="tm-admin\scss\gsdk-bootstrap-wizard\_buttons.scss" />

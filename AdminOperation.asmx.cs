@@ -896,7 +896,7 @@ namespace TaskManager
                 {
                     where = " and convert(date,DUE_DATE)=convert(date,getdate())";
                 }
-                else if (DropdownValue == "In Progress" || DropdownValue == "Not Started")
+                else if (DropdownValue == "In Progress" || DropdownValue == "Not Started" || DropdownValue == "Waiting for input")
                 {
                     where = " and tm.STATUS='" + DropdownValue + "'";
                 }
@@ -1136,7 +1136,7 @@ namespace TaskManager
                 {
                     where = " and convert(date,DUE_DATE)=convert(date,getdate())";
                 }
-                else if (DropdownValue == "In Progress" || DropdownValue == "Not Started")
+                else if (DropdownValue == "In Progress" || DropdownValue == "Not Started" || DropdownValue == "Waiting for input")
                 {
                     where = " and tm.STATUS='" + DropdownValue + "'";
                 }
@@ -1165,7 +1165,7 @@ namespace TaskManager
 
                     //get the all task
                     DataTable dt = D.GetDataTable("select convert(VARCHAR,tm.due_date,106) as DUEDATE,convert(VARCHAR,tm.due_date,105), '' as TASK_OWNER_NAME, tm.*,em.first_name+' '+em.last_name as ASSIGNED_EMPLOYEE_NAME from " +
-                                                    "  as tm ,employee_master as em where " +
+                                                    "TASK_MASTER  as tm ,employee_master as em where " +
                                                     "em.ID=tm.ASSIGN_TO and tm.TASK_OWNER!=tm.ASSIGN_TO " + where + " order by tm.DUE_DATE asc");
 
                     if (dt.Rows.Count > 0)

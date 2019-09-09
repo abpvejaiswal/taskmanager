@@ -9,33 +9,55 @@ app.filter('split', function () {
 
 
 app.directive('ngConfirmClick', [
-function () {
-    return {
-        link: function (scope, element, attr) {
-            var msg = attr.ngConfirmClick || "Are you sure?";
-            var clickAction = attr.confirmedClick;
-            element.bind('click', function (event) {
-                if (window.confirm(msg)) {
-                    scope.$eval(clickAction)
-                }
-            });
-        }
-    };
-}]);
+    function () {
+        return {
+            link: function (scope, element, attr) {
+                var msg = attr.ngConfirmClick || "Are you sure?";
+                var clickAction = attr.confirmedClick;
+                element.bind('click', function (event) {
+                    if (window.confirm(msg)) {
+                        scope.$eval(clickAction)
+                    }
+                });
+            }
+        };
+    }]);
 
 // Order Master
 app.controller('ToDoListController', function ($scope, $http, $window, ngProgressFactory, $filter) {
 
-    $scope.ADD_TASK = { ASSIGN_TO: '0', SUBJECT: '', START_DATE: '', CONTACT_PERSON: '0', CONTACT_NUMBER: '', CONTACT_EMAIL_ID: '', TARGETED_DAYS: '',FINANCIAL_YEAR:'0', ASSESSMENT_YEAR: '', DUE_DATE: '', STATUS: 'Not Started', PRIORITY: 'High', IS_REPEAT: false, REPEAT_TYPE: 'None', REPEAT_FOR_EVERYDAY: '1', REPEAT_FOR_EVERYWEEK: '1', IS_ON_DAYWISE: true, MONTH_DAYS_NO: '1', MONTH_DAY_NO: '1', MONTH_WEEK_SEQUENCE_TYPE: 'First', MONTH_WEEKSEQUENCE_DAY: 'Sunday', MONTH_WEEKSEQUENCE_MONTH_NO: '1', DESCRIPTION: '', IS_EVERY_DAY: true, REPEAT_WEEK_ON: '', IS_YEARLY_DAYS_ON: false, YEARLY_DAYS_OF_MONTH: '1', YEARLY_DAYS_NO: '1', YEARLY_WEEKSEQUENCE_TYPE: 'First', YEARLY_WEEKSEQUENCE_NO: 'Sunday', YEARLY_WEEKSEQUENCE_MONTH_NAME: '1', REMINDER_DAY_BEFORE: '' };
+    $scope.ADD_TASK = { ASSIGN_TO: '0', SUBJECT: '', START_DATE: '', CONTACT_PERSON: '0', CONTACT_NUMBER: '', CONTACT_EMAIL_ID: '', TARGETED_DAYS: '', FINANCIAL_YEAR: '0', ASSESSMENT_YEAR: '', DUE_DATE: '', STATUS: 'Not Started', PRIORITY: 'High', IS_REPEAT: false, REPEAT_TYPE: 'None', REPEAT_FOR_EVERYDAY: '1', REPEAT_FOR_EVERYWEEK: '1', IS_ON_DAYWISE: true, MONTH_DAYS_NO: '1', MONTH_DAY_NO: '1', MONTH_WEEK_SEQUENCE_TYPE: 'First', MONTH_WEEKSEQUENCE_DAY: 'Sunday', MONTH_WEEKSEQUENCE_MONTH_NO: '1', DESCRIPTION: '', IS_EVERY_DAY: true, REPEAT_WEEK_ON: '', IS_YEARLY_DAYS_ON: false, YEARLY_DAYS_OF_MONTH: '1', YEARLY_DAYS_NO: '1', YEARLY_WEEKSEQUENCE_TYPE: 'First', YEARLY_WEEKSEQUENCE_NO: 'Sunday', YEARLY_WEEKSEQUENCE_MONTH_NAME: '1', REMINDER_DAY_BEFORE: '' };
     //$scope.ADD_TASK.REPEAT_WEEK_ON = {};
-    $scope.progressbar = ngProgressFactory.createInstance(); 
+    $scope.progressbar = ngProgressFactory.createInstance();
     $scope.color = 'firebrick';
     $scope.height = '5px';
     // $scope.progressbar.start();
-    debugger
+
     //Fill the contact number and contact email id by contact number
-    $scope.ChangeContactPerson  = function () {
-        var number_email = $(".CONTACT_PERSON").val().split(',');        
+
+    $(".CONTACT_PERSON").change(function () {
+        debugger;
+        var number_email = $(".CONTACT_PERSON").val().split(',');
+        console.log(number_email);
+        $("#txtCONTACT_NUMBER").val(number_email[0]);
+        $("#txtCONTACT_EMAIL_ID").val(number_email[1]);
+        $scope.ADD_TASK.CONTACT_NUMBER = number_email[0];
+        $scope.ADD_TASK.CONTACT_EMAIL_ID = number_email[1];
+        $(".myfg").addClass("fg-toggled");
+
+
+    });
+
+
+    $(".FINANCIAL_YEAR").change(function () {
+        debugger;
+        var financial_year = $(".FINANCIAL_YEAR").val();
+        $scope.ADD_TASK.ASSESSMENT_YEAR = financial_year;
+        $("#txtASSESSMENT_YEAR").val(financial_year);
+    });
+    $scope.ChangeContactPerson = function () {
+        debugger;
+        var number_email = $(".CONTACT_PERSON").val().split(',');
         console.log(number_email);
         $scope.ADD_TASK.CONTACT_NUMBER = number_email[0];
         $scope.ADD_TASK.CONTACT_EMAIL_ID = number_email[1];
@@ -48,12 +70,12 @@ app.controller('ToDoListController', function ($scope, $http, $window, ngProgres
     //Fill the targeted days of work finish
     $scope.GetTargetedDays = function (targeted_days) {
         var wr = $("#START_DATE").val();
-        $scope.mydate = new Date(wr);        
+        $scope.mydate = new Date(wr);
         $scope.mydate.setDate($scope.mydate.getDate() + parseInt(targeted_days));
         $scope.ddMMyyyy = $filter('date')($scope.mydate, 'yyyy-MM-dd');
         $("#DUE_DATE").val($scope.ddMMyyyy);
         $(".fg-targeted").addClass("fg-toggled");
-  
+
     }
 
     $scope.btnsubmit = false;
@@ -68,7 +90,7 @@ app.controller('ToDoListController', function ($scope, $http, $window, ngProgres
         //DUE_DATE: $("#DUE_DATE").val(),
         debugger;
         var emp_id = $(".ddlEmployee").val();
-        if (ADD_TASK.SUBJECT == '' || emp_id == '0' || start_date == '' || due_date == '' || ADD_TASK.TARGETED_DAYS == '' || ADD_TASK.CONTACT_PERSON == '0' || ADD_TASK.CONTACT_NUMBER == '' || ADD_TASK.CONTACT_EMAIL_ID == '' ) {
+        if (ADD_TASK.SUBJECT == '' || emp_id == '0' || start_date == '' || due_date == '' || ADD_TASK.TARGETED_DAYS == '' || ADD_TASK.CONTACT_NUMBER == '' || ADD_TASK.CONTACT_EMAIL_ID == '') {
             alert('Please Fill compulsory fields ! ');
             return;
         }
@@ -91,7 +113,7 @@ app.controller('ToDoListController', function ($scope, $http, $window, ngProgres
         }
         $scope.btnsubmit = true;
         $(".btnsubmit").html('<img src="/tm-admin/img/Rolling.gif" />');
-            
+
         debugger;
         $scope.ADD_TASK.REPEAT_WEEK_ON = cat_name;
         var data = $.param({
@@ -136,6 +158,10 @@ app.controller('ToDoListController', function ($scope, $http, $window, ngProgres
 
     $scope.tasklist = [];
     $scope.FilterOption = "todays+overdue";
+
+    //Get Filter quesry string value
+    setFilterDropDownByQuesryString();
+
     $scope.GetMyTask = function () {
         $scope.progressbar.start();
         var data = $.param({
@@ -190,7 +216,7 @@ app.controller('ToDoListController', function ($scope, $http, $window, ngProgres
     }
     $scope.GetAllTask();
 
-    $scope.DeleteTask = function (ID,page) {
+    $scope.DeleteTask = function (ID, page) {
         $scope.progressbar.start();
         var data = $.param({
             type: "delete_task",
@@ -260,7 +286,7 @@ app.controller('ToDoListController', function ($scope, $http, $window, ngProgres
             TASK_ID: TASK_DETAIL.ID,
             IS_CLOSED: IS_CLOSED,
             SUBJECT: TASK_DETAIL.SUBJECT,
-            TASK_OWNER_ID: TASK_DETAIL.TASK_OWNER_ID,            
+            TASK_OWNER_ID: TASK_DETAIL.TASK_OWNER_ID,
             ACTUAL_WORK_FINISH_DATE: $("#ACTUAL_WORK_FINISH_DATE").val(),
             ACTUAL_DAYS_TAKEN: $("#ACTUAL_DAYS_TAKEN").text()
             //WORK_FROM_HOME: TASK_DETAIL.WORK_FROM_HOME
@@ -339,11 +365,53 @@ app.controller('ToDoListController', function ($scope, $http, $window, ngProgres
         $scope.TASK_DETAIL = data;
     }
     $(".trCompleted").hide();
-    $scope.ChangeStatus = function (data) {        
+    $scope.ChangeStatus = function (data) {
         if (data == "Completed") {
             $(".trCompleted").show();
         } else {
             $(".trCompleted").hide();
         }
     }
+
+    function setFilterDropDownByQuesryString() {
+        debugger;
+        var url = window.location.href;
+        var RequestedTask = url.split('=');
+        var FilterOption = RequestedTask[1];
+        //$("#FilterTask").val(FilterOption);
+        if (FilterOption === "NotStarted") {
+            $scope.FilterOption = "Not Started";
+        }
+        else if (FilterOption === "Inprogress") {
+            $scope.FilterOption = "In Progress";
+        }
+        else if (FilterOption === "Waitingforinput") {
+            $scope.FilterOption = "Waiting for input";
+        }
+        else if (FilterOption === "Completed") {
+            $scope.FilterOption = "closetask";
+        }
+        else if (FilterOption === "TodayTask") {
+            $scope.FilterOption = "todaystask";
+        }
+        else if (FilterOption === "todays+overdue") {
+            $scope.FilterOption = "todays+overdue";
+        }
+        else if (FilterOption === "alltask") {
+            $scope.FilterOption = "alltask";
+        }                
+    }
+
+    $scope.Export = function () {
+        $("#tblTask").table2excel({
+            filename: "Table.xls",
+            exclude: ".checkbox",
+            exclude_img: true,
+            exclude_links: true,
+            exclude_inputs: true,
+            preserveColors: false,
+            exclude_html: true
+        });
+    }
+
 });
